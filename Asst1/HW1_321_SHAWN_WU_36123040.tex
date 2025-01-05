@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+
+% Required packages
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{parskip}
+\usepackage{graphicx}
+
+% \geometry{left=0.5in, right=0.5in}
+
+% Page style
+\pagestyle{fancy}
+
+% Define header
+\rhead{36123040 Shawn Wu}
+\lhead{MATH 321 HW 01} % Put your actual assignment number here
+\cfoot{\thepage}
+
+% To start each section (problem) on a new page
+% \titleformat{\section}[block]{\normalfont\bfseries}{\thesection}{1em}{}
+% \titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+% \newcommand{\sectionbreak}{\clearpage}
+
+
+\newenvironment{fproof}[1][]
+  {\begin{proof}[\ifx\relax#1\relax\else\textbf{\large #1} Proof\fi]}
+  {\end{proof}}
+
+% Redefine the QED symbol
+\renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}  % Solid square
+
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\angl}[1]{\left\langle #1 \right\rangle}
+\newcommand{\pare}[1]{\left( #1 \right)}
+\newcommand{\brac}[1]{\left[ #1 \right]}
+
+
+
+
+\begin{document}
+
+% Problem 1
+\begin{fproof}[1] 
+\end{fproof}
+
+\newpage
+
+% Problem 2
+\begin{fproof}[2]
+\end{fproof}
+
+\newpage
+
+% Problem 3
+\begin{fproof}[3]
+\end{fproof}
+
+\newpage
+
+% Problem 4
+\begin{fproof}[4(a)]
+\end{fproof}
+
+\begin{fproof}[4(b)]
+\end{fproof}
+
+\begin{fproof}[4(c)]
+\end{fproof}
+
+\begin{fproof}[4(d)]
+\end{fproof}
+
+\newpage
+
+% Problem 5
+\begin{fproof}[5]
+\end{fproof}
+
+
+\end{document}
