@@ -10,6 +10,7 @@
 \usepackage{bm}
 \usepackage{parskip}
 \usepackage{graphicx}
+\usepackage{physics}
 
 % \geometry{left=0.5in, right=0.5in}
 
@@ -35,12 +36,13 @@
 \renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}  % Solid square
 
 \newcommand{\set}[1]{\left\{ #1 \right\}}
-\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
-\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+% \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+% \newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
 \newcommand{\angl}[1]{\left\langle #1 \right\rangle}
 \newcommand{\pare}[1]{\left( #1 \right)}
 \newcommand{\brac}[1]{\left[ #1 \right]}
-
+\newcommand{\upint}[2]{\overline{\int_{#1}^{#2}}}
+\newcommand{\loint}[2]{\underline{\int_{#1}^{#2}}}
 
 
 
@@ -60,11 +62,11 @@
   \end{align*}
   Since the upper and lower Stieltjes sums both remain the same no matter the partition we choose, hence based on the definition of upper and lower Stieltjes integrals,
   \begin{align*}
-    \overline{\int_{a}^{b}} f d \alpha = \alpha(b) - \alpha(a) = \underline{\int_{a}^{b}} f d \alpha.
+    \upint{a}{b} f \dd \alpha = \alpha(b) - \alpha(a) = \loint{a}{b} f \dd \alpha.
   \end{align*} 
   And since the upper and lower Stieltjes integrals agree, 
   \begin{align*}
-    \int_{a}^{b} f d \alpha = \alpha(b) - \alpha(a).
+    \int_{a}^{b} f \dd \alpha = \alpha(b) - \alpha(a).
   \end{align*}
 \end{fproof}
 
@@ -72,6 +74,33 @@
 
 % Problem 2
 \begin{fproof}[2]
+  First notice that given any partition \(P\) (assuming all points are distinct), \(M_i = 1\) for any \(i\), since in any non-trivial closed sub-intervals of \([a,b]\), there are points that are not in \(S\).
+  Therefore, for any partition \(P\),
+  \begin{align*}
+    U(P, f, \alpha) = \sum_i M_i \Delta x_i = \sum_i \Delta x_i = b - a.
+  \end{align*}
+  This means that,
+  \begin{align*}
+    \upint{a}{b} f \dd x = b - a.
+  \end{align*}
+  It remains to show the lower Riemann integral is also \(b-a\), 
+  i.e., \(\sup_{P} L(P, f) = b-a\).
+
+  First notice that \(b-a\) is an upper bound of all the lower Riemann sums as \(m_i \leq 1\) for all i, for any partition \(P\).
+  Now let \(\varepsilon > 0\) be given.
+  We show that there exists a partition \(P\) such that \(b-a - \varepsilon < L(P,f)\), which establishes that the supremum of all the lower Riemann integrals is indeed \(b-a\).
+  Note that for any partition \(P\),
+  \begin{align*}
+    L(P,f) = b - a - \sum_j \Delta x_j,
+  \end{align*}
+  where the \(\sum_j \Delta x_j\) term comes from the sub-intervals from \(P\) that contains points of \(S\).
+  We thus choose a partition \(P\) such that \(\Delta x_i < \varepsilon/k\).
+  Since \(\sum_j \Delta x_j\) contains at most \(k\) summands, \(\sum_j \Delta x_j < \varepsilon\) in this partition \(P\), which gives \(L(P,f) > b-a-\varepsilon\).
+
+  Since the lower and upper Riemann integral agree and equal to \(b-a\), \(f\) is Riemann-integrable and \(\int_{a}^{b} f \dd x = b-a\).
+
+
+
 \end{fproof}
 
 \newpage
