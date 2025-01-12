@@ -130,12 +130,25 @@ However, notice that \(\abs{f}\) is the constant 1 function, which is always Sti
 
 % Problem 4
 \begin{fproof}[4(a)]
+  This function is Stieltjes-integrable and 
 \end{fproof}
 
 \begin{fproof}[4(b)]
 \end{fproof}
 
 \begin{fproof}[4(c)]
+  This function is not Stieltjes-integrable.
+  It is suffice to show that \(U(P) - L(P) \geq 2\) for all partition \(P\), then by Theorem 6.6, \(f \notin \mathcal{R}_{\alpha}[-1,1]\).
+  
+  Let partition \(P\) on \([-1,1]\) be arbitrary. Let \(P^*\) be the refinement of \(P\) by add the point \(0\) in the partition.
+  Then by Theorem 4.4, \(U(P) - L(P) \geq U(P^*) - L(P^*)\).
+  Suppose within \(P\), \(x_{I} = 0\) for some \(I\) (assume all the partition points are distinct).
+  Then, \(\Delta \alpha_i = 0\) for any \(i \neq I\), and \(M_I = 1, m_I = -1, \Delta \alpha_I = 1\).
+  Therefore,
+  \begin{align*}
+    U(P) - L(P) \geq U(P^*) - L(P^*) = (M_I - m_I) \Delta \alpha_I = 2 \cdot 1 = 2.
+  \end{align*}
+
 \end{fproof}
 
 \begin{fproof}[4(d)]
