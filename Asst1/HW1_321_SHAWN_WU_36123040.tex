@@ -107,6 +107,23 @@
 
 % Problem 3
 \begin{fproof}[3]
+  Let \(\alpha\) be just the identity function on \([a,b]\) and let \(f\) be a modified Dirichlet function:
+\[
+f(x) = \begin{cases}
+  1 &\text{ if } x \in [a,b] \cap \mathbb{Q},\\
+  -1 &\text{ otherwise.}
+\end{cases}
+\]
+Note that given any partition \(P\), all the non-trivial sub-intervals \([x_{i-1}, x_i]\) from \(P\) contain both irrational and rational points.
+Therefore, \(M_i = 1\) and \(m_i = -1\) for all \(i\), for any partition \(P\), which means that the upper Stieltjes sum (which is just the upper Riemann sum) is always \(b-a\) and the lower Stieltjes sum (which is just the lower Riemann sum) is always \(a-b\), no matter the partition we choose.
+This means that
+\begin{align*}
+  b-a = \upint{a}{b} \dd \alpha \neq \loint{a}{b} \dd \alpha = a-b,
+\end{align*}
+as \(b \neq a\).
+Therefore, \(f \notin \mathcal{R}_{\alpha}[a,b]\).
+However, notice that \(\abs{f}\) is the constant 1 function, which is always Stieltjes-integrable as it is continuous.
+
 \end{fproof}
 
 \newpage
