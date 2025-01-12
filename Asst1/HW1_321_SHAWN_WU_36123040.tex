@@ -47,7 +47,25 @@
 \begin{document}
 
 % Problem 1
-\begin{fproof}[1] 
+\begin{fproof}[1]
+  First notice that since \(f\) is a constant function always equals to 1, \(m_i = M_i = 1\) for all \(i\), for any partition \(P\).
+  Therefore, for any partition \(P\),
+  \begin{align*}
+    U(P,f, \alpha) = \sum_i M_i \Delta \alpha_i = \sum \Delta \alpha_i = \alpha(b) - \alpha(a),
+  \end{align*}
+  as the sum telescopes.
+  Similarly, for any partition \(P\),
+  \begin{align*}
+    L(P,f, \alpha) = \sum_i m_i \Delta \alpha_i = \sum \Delta \alpha_i = \alpha(b) - \alpha(a).
+  \end{align*}
+  Since the upper and lower Stieltjes sums both remain the same no matter the partition we choose, hence based on the definition of upper and lower Stieltjes integrals,
+  \begin{align*}
+    \overline{\int_{a}^{b}} f d \alpha = \alpha(b) - \alpha(a) = \underline{\int_{a}^{b}} f d \alpha.
+  \end{align*} 
+  And since the upper and lower Stieltjes integrals agree, 
+  \begin{align*}
+    \int_{a}^{b} f d \alpha = \alpha(b) - \alpha(a).
+  \end{align*}
 \end{fproof}
 
 \newpage
