@@ -1,50 +1,13 @@
 \documentclass[12pt]{article}
-
-% Required packages
-\usepackage[margin=1in]{geometry}
-\usepackage{fancyhdr}
-\usepackage{titlesec}
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{bm}
-\usepackage{parskip}
-\usepackage{graphicx}
-\usepackage{physics}
-
-% \geometry{left=0.5in, right=0.5in}
+\usepackage{yassification}
 
 % Page style
 \pagestyle{fancy}
-
+\setlength{\headheight}{15pt}
 % Define header
 \rhead{36123040 Shawn Wu}
-\lhead{MATH 321 HW 01} % Put your actual assignment number here
+\lhead{MATH 412 HW 01} % Put your actual assignment number here
 \cfoot{\thepage}
-
-% To start each section (problem) on a new page
-% \titleformat{\section}[block]{\normalfont\bfseries}{\thesection}{1em}{}
-% \titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-% \newcommand{\sectionbreak}{\clearpage}
-
-
-\newenvironment{fproof}[1][]
-  {\begin{proof}[\ifx\relax#1\relax\else\textbf{\large #1} Proof\fi]}
-  {\end{proof}}
-
-% Redefine the QED symbol
-\renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}  % Solid square
-
-\newcommand{\set}[1]{\left\{ #1 \right\}}
-% \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
-% \newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
-\newcommand{\angl}[1]{\left\langle #1 \right\rangle}
-\newcommand{\pare}[1]{\left( #1 \right)}
-\newcommand{\brac}[1]{\left[ #1 \right]}
-\newcommand{\upint}[2]{\overline{\int_{#1}^{#2}}}
-\newcommand{\loint}[2]{\underline{\int_{#1}^{#2}}}
-
-
 
 \begin{document}
 
@@ -62,11 +25,11 @@
   \end{align*}
   Since the upper and lower Stieltjes sums both remain the same no matter the partition we choose, hence based on the definition of upper and lower Stieltjes integrals,
   \begin{align*}
-    \upint{a}{b} f \dd \alpha = \alpha(b) - \alpha(a) = \loint{a}{b} f \dd \alpha.
+    \upint{a}{b} f \dalf = \alpha(b) - \alpha(a) = \loint{a}{b} f \dalf.
   \end{align*} 
   And since the upper and lower Stieltjes integrals agree, 
   \begin{align*}
-    \int_{a}^{b} f \dd \alpha = \alpha(b) - \alpha(a).
+    \int_{a}^{b} f \dalf = \alpha(b) - \alpha(a).
   \end{align*}
 \end{fproof}
 
@@ -81,7 +44,7 @@
   \end{align*}
   This means that,
   \begin{align*}
-    \upint{a}{b} f \dd x = b - a.
+    \upint{a}{b} f \dx = b - a.
   \end{align*}
   It remains to show the lower Riemann integral is also \(b-a\), 
   i.e., \(\sup_{P} L(P, f) = b-a\).
@@ -97,7 +60,7 @@
   We thus choose a partition \(P\) such that \(\Delta x_i < \varepsilon/k\).
   Since \(\sum_j \Delta x_j\) contains at most \(k\) summands, \(\sum_j \Delta x_j < \varepsilon\) in this partition \(P\), which gives \(L(P,f) > b-a-\varepsilon\).
 
-  Since the lower and upper Riemann integral agree and equal to \(b-a\), \(f\) is Riemann-integrable and \(\int_{a}^{b} f \dd x = b-a\).
+  Since the lower and upper Riemann integral agree and equal to \(b-a\), \(f\) is Riemann-integrable and \(\int_{a}^{b} f \dx = b-a\).
 
 
 
@@ -118,7 +81,7 @@ Note that given any partition \(P\), all the non-trivial sub-intervals \([x_{i-1
 Therefore, \(M_i = 1\) and \(m_i = -1\) for all \(i\), for any partition \(P\), which means that the upper Stieltjes sum (which is just the upper Riemann sum) is always \(b-a\) and the lower Stieltjes sum (which is just the lower Riemann sum) is always \(a-b\), no matter the partition we choose.
 This means that
 \begin{align*}
-  b-a = \upint{a}{b} \dd \alpha \neq \loint{a}{b} \dd \alpha = a-b,
+  b-a = \upint{a}{b} \dalf \neq \loint{a}{b} \dalf = a-b,
 \end{align*}
 as \(b \neq a\).
 Therefore, \(f \notin \mathcal{R}_{\alpha}[a,b]\).
