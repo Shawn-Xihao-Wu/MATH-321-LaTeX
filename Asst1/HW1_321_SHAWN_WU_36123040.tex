@@ -86,9 +86,7 @@ This means that
 as \(b \neq a\).
 Therefore, \(f \notin \mathcal{R}_{\alpha}[a,b]\).
 However, notice that \(\abs{f}\) is the constant 1 function, which is always Stieltjes-integrable as it is continuous.
-
 \end{fproof}
-
 \newpage
 
 % Problem 4
@@ -111,17 +109,40 @@ However, notice that \(\abs{f}\) is the constant 1 function, which is always Sti
   \begin{align*}
     U(P) - L(P) \geq U(P^*) - L(P^*) = (M_I - m_I) \Delta \alpha_I = 2 \cdot 1 = 2.
   \end{align*}
-
 \end{fproof}
 
 \begin{fproof}[4(d)]
-\end{fproof}
+   Note that \(f\) is continuous on \([-1,1]\); hence by Rudin Theorem 6.8, \(f \in \mathcal{R}_{\alpha}[-1,1]\).
 
+   We claim that \(\int_{-1}^{1} f \dalf = 1\).
+   We need to show that \(\sup_P L(P) = 1 = \inf_P U(P)\).
+   Now take any partition \(P\).
+   We take the refinement \(P^*\) that includes the origin. Then \(L(P) \leq L(P^*)\) and \(U(P^*) \leq U(P)\).
+   Also note that since \(\alpha\) is a piece-wise function comprised of constant functions, \(\Delta \alpha_i = 0\) if \([x_{i-1}, x_i] \subseteq (-1, 0]\) or \([x_{i-1}, x_i] \subseteq (0,1)\).
+   Therefore, \(P^*\) has the same effect as \(Q = \set{-1, x_1, 0, x_3, x_4, 1}\) where \(x_1 \in (-1,0), x_3,x_4 \in (0,1)\).
+   We can further assume that \(x_1 = -1 + \varepsilon, x_3 = \varepsilon, x_4 = 1-\varepsilon\) for some \(\varepsilon\) some enough.
+   Therefore,
+   \begin{align*}
+    U(Q) & = \sum_{i=1}^{5}M_i \Delta \alpha_i = M_1 \cdot 1 + M_2 \cdot 0 + M_3 \cdot 2 + M_4 \cdot 0 +  M_5 \cdot 2\\
+    & = M_1 + 2M_3 + 2M_5\\
+    & = (-1 + \varepsilon) + 2\varepsilon + 2\\
+    & = 1 + 3 \varepsilon.
+   \end{align*}
+   Therefore, \(\inf_P U(P)= 1\) as \(\varepsilon\) can be arbitrarily small.
+   Similarly,
+   \begin{align*}
+    L(Q) & = \sum_{i=1}^{5}m_i \Delta \alpha_i = m_1 \cdot 1 + m_2 \cdot 0 + m_3 \cdot 2 + m_4 \cdot 0 +  m_5 \cdot 2\\
+    &= m_1 + 2m_3 + 2m_5\\
+    &= -1 + 2 \cdot 0 + 2 \cdot (1- \varepsilon)\\
+    & = 1-2 \varepsilon.
+   \end{align*}
+   Therefore, \(\sup_P L(P) = 1\).
+   Hence, the integral is \(1\).
+\end{fproof}
 \newpage
 
 % Problem 5
 \begin{fproof}[5]
+
 \end{fproof}
-
-
 \end{document}
