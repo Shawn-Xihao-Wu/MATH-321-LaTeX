@@ -91,7 +91,22 @@ However, notice that \(\abs{f}\) is the constant 1 function, which is always Sti
 
 % Problem 4
 \begin{fproof}[4(a)]
-  This function is Stieltjes-integrable and 
+  This function is Stieltjes-integrable and \(\int_{-1}^{1} f \dalf = -1\).
+  First note that given any partition \(P\), then \(\Delta \alpha_i = 0\) if \([x_{i-1}, x_i] \subseteq [-1,0)\) or \([x_{i-1}, x_i] \subseteq [0,1]\).
+  Therefore, \(P\) has the same effect as the its sub-partition \(Q = \set{x_i,x_j}\subseteq P\) where \([x_i,x_j]\) contains the origin (\(x_i \neq 0\)).
+  Now take the refinement \(Q^*\) by adding the origin, i.e., \(Q^* = [x_i, x_{i^*}, x_j]\) where \(x_{i^*} = 0\).
+  Hence, we see that 
+  \begin{align*}
+    U(P) \geq U(Q^*) = M_{i^*} (\alpha(0) - \alpha(x_i)) = -1 \cdot 1  = -1.
+  \end{align*}
+  Similarly,
+  \begin{align*}
+    L(P) \leq U(Q^*) = m_{i^*} (\alpha(0) - \alpha(x_i)) = -1 \cdot 1 = -1.
+  \end{align*}
+  Since \(P\) is arbitrary,
+  we see that \(\sup_P L(P) = 1 = \inf_P U(P)\), i.e. the lower integral agrees with the upper integral.
+  Hence, the integral value is \(-1\).
+
 \end{fproof}
 
 \begin{fproof}[4(b)]
@@ -101,7 +116,7 @@ However, notice that \(\abs{f}\) is the constant 1 function, which is always Sti
   This function is not Stieltjes-integrable.
   It is suffice to show that \(U(P) - L(P) \geq 2\) for all partition \(P\), then by Theorem 6.6, \(f \notin \mathcal{R}_{\alpha}[-1,1]\).
   
-  Let partition \(P\) on \([-1,1]\) be arbitrary. Let \(P^*\) be the refinement of \(P\) by add the point \(0\) in the partition.
+  Let partition \(P\) on \([-1,1]\) be arbitrary. Let \(P^*\) be the refinement of \(P\) by adding the point \(0\) in the partition.
   Then by Theorem 4.4, \(U(P) - L(P) \geq U(P^*) - L(P^*)\).
   Suppose within \(P\), \(x_{I} = 0\) for some \(I\) (assume all the partition points are distinct).
   Then, \(\Delta \alpha_i = 0\) for any \(i \neq I\), and \(M_I = 1, m_I = -1, \Delta \alpha_I = 1\).
