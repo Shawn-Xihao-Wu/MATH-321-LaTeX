@@ -6,7 +6,7 @@
 \setlength{\headheight}{15pt}
 % Define header
 \rhead{36123040 Shawn Wu}
-\lhead{MATH 412 HW 01} % Put your actual assignment number here
+\lhead{MATH 321 HW 01} % Put your actual assignment number here
 \cfoot{\thepage}
 
 \begin{document}
@@ -92,8 +92,8 @@ However, notice that \(\abs{f}\) is the constant 1 function, which is always Sti
 % Problem 4
 \begin{fproof}[4(a)]
   This function is Stieltjes-integrable and \(\int_{-1}^{1} f \dalf = -1\).
-  First note that given any partition \(P\), then \(\Delta \alpha_i = 0\) if \([x_{i-1}, x_i] \subseteq [-1,0)\) or \([x_{i-1}, x_i] \subseteq [0,1]\).
-  Therefore, \(P\) has the same effect as the its sub-partition \(Q = \set{x_i,x_j}\subseteq P\) where \([x_i,x_j]\) contains the origin (\(x_i \neq 0\)).
+  First note that given any partition \(P\), \(\Delta \alpha_i = 0\) if \([x_{i-1}, x_i] \subseteq [-1,0)\) or \([x_{i-1}, x_i] \subseteq [0,1]\).
+  Therefore, \(P\) has the same effect as its sub-partition \(Q = \set{x_i,x_j}\subseteq P\) where \([x_i,x_j]\) contains the origin (\(x_i \neq 0\)).
   Now take the refinement \(Q^*\) by adding the origin, i.e., \(Q^* = [x_i, x_{i^*}, x_j]\) where \(x_{i^*} = 0\).
   Hence, we see that 
   \begin{align*}
@@ -101,15 +101,28 @@ However, notice that \(\abs{f}\) is the constant 1 function, which is always Sti
   \end{align*}
   Similarly,
   \begin{align*}
-    L(P) \leq U(Q^*) = m_{i^*} (\alpha(0) - \alpha(x_i)) = -1 \cdot 1 = -1.
+    L(P) \leq L(Q^*) = m_{i^*} (\alpha(0) - \alpha(x_i)) = -1 \cdot 1 = -1.
   \end{align*}
   Since \(P\) is arbitrary,
-  we see that \(\sup_P L(P) = 1 = \inf_P U(P)\), i.e. the lower integral agrees with the upper integral.
+  we see that \(\sup_P L(P) = -1 = \inf_P U(P)\), i.e. the lower integral agrees with the upper integral.
   Hence, the integral value is \(-1\).
 
 \end{fproof}
 
 \begin{fproof}[4(b)]
+  We claim that \(f \in \mathcal{R}_{\alpha}[-1,1]\) and \(\int_{-1}^{1} \dalf = 1\).
+  First note that given any partition \(P\), \(\Delta \alpha_i = 0\) if \([x_{i-1}, x_i] \subseteq [-1,0]\) or \([x_{i-1}, x_i] \subseteq (0,1]\).
+  Therefore, \(P\) has the same effect as its sub-partition \(Q = \set{x_i, x_j} \subseteq P\) where \([x_i,x_j]\) contains the origin (\(x_j \neq 0\)).
+  Now take the refinement \(Q^*\) by adding the origin, i.e., \(Q^* = \set{x_i, x_{j^*}, x_j}\) where \(x_{j^*} = 0\).
+  Hence,
+  \begin{align*}
+    U(P) \geq U(Q^*) = M_j(\alpha(x_j) - \alpha(0)) = 1 \cdot 1 = 1.
+  \end{align*}
+  Similarly,
+  \begin{align*}
+    L(P) \leq L(Q^*) = m_j(\alpha(x_j) - \alpha(0)) = 1 \cdot 1 = 1.
+  \end{align*}
+  Since \(P\) is arbitrary, we see that \(\sup_P L(P) = 1 = \inf_P U(P)\), i.e., the lower integral agrees with the upper integral. Hence the integral is \(1\).
 \end{fproof}
 
 \begin{fproof}[4(c)]
