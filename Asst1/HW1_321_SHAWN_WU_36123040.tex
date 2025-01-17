@@ -171,6 +171,39 @@ However, notice that \(\abs{f}\) is the constant 1 function, which is always Sti
 
 % Problem 5
 \begin{fproof}[5]
+  We show that \(f \in \mathcal{R}[0,1]\) by showing that for all \(\varepsilon > 0,\) there exists a partition \(P_{\varepsilon}\) such that \(U(P_{\varepsilon},f) - L(P_{\varepsilon},f) < \varepsilon\).
 
+  We first claim that given any partition \(P = \{x_0, x_1, \cdots, x_n\},\) \(L(P,f) = 0\) always.
+  To see this, note that given any closed interval \([a,b] \subseteq [0,1]\) where \(a < b,\) there are always irrational numbers within \([a,b]\) as irrational numbers are dense in \(\mathbb{R}\).
+  Therefore, we have \(\inf_{x \in [a,b]} f(x) = 0.\)
+  This means that
+  \begin{align*}
+    L(P,f) = \sum_{i = 1}^{n} m_i \Delta x_i = \sum_{i=1}^{n} 0 \cdot \Delta x_i = 0.
+  \end{align*}
+  It remains to show that given any \(\varepsilon > 0,\) there exists a partition \(P_{\varepsilon},\) such that \(U(P_{\varepsilon}, f) < \varepsilon.\)
+  
+  Let \(\varepsilon > 0\) be given. Then by Archimedean Property, we know there exists \(q \in \mathbb{N},\) such that \(\frac{1}{q} < \frac{\varepsilon}{2}.\)
+  We note that there are only finitely many of \(x\)'s within \([0,1]\) where \(f(x) \geq \frac{1}{q};\) let \(\mathcal{F} \subseteq [0,1]\) be such set of \(x\)'s and let \(|\mathcal{F}| = N\) (we choose \(q\) big enough so that \(N \geq 1\)).
+  We also note that the range of \(f\) on \([0,1]\) is bounded above by 1.
+
+  Given the above information we create the partition \(P_{\varepsilon}\) in the following way.
+  We list the elements of \(\mathcal{F}\) for the smallest to the largest, i.e., \(\mathcal{F} = \{z_1, z_2, \cdots, z_N\}.\)
+  For each \(i\) from 1 to \(N,\) let \([a_i,b_i]\) be the closed interval contains \(z_i\) where \(0 < b_i-a_i < \frac{\varepsilon}{2N}.\) Then shrink each \([a_i, b_i]\) if necessary to make sure all \([a_i, b_i]\) intervals are pairwise disjoint. Add all final \(a_i\)'s and \(b_i\)'s to \(P_{\varepsilon}.\) 
+
+  Now list \(P_{\varepsilon} = \{x_0, x_1, \cdots, x_K\}\) where \(K\) is some natural number.
+  Now we know \(U(P_{\varepsilon}, f) = \sum_{j=1}^{K} M_j \Delta x_j.\)
+  Thus for each \(j\) from 1 to \(K,\) either \([x_{j-1}, x_j] \cap \mathcal{F} \neq \varnothing\) or not by above construction. And if \([x_{j-1}, x_j] \cap \mathcal{F} \neq \varnothing,\) then \(M_i < 1\); note that we have precisely \(N\) number of such intervals. If \([x_{j-1}, x_j] \cap \mathcal{F} = \varnothing,\) then \(M_i < \frac{1}{q}\); note that we have precisely \(K-N\) number of such intervals.
+  Hence,
+  \begin{align*}
+    U(P_{\varepsilon}, f) &= \sum_{j=1}^{K} M_i \Delta x_j\\
+    &= \sum_{j | [x_{j-1}, x_j] \cap \mathcal{F} \neq \varnothing} M_j \Delta x_j + \sum_{j | [x_{j-1}, x_j] \cap \mathcal{F} = \varnothing} M_j \Delta x_j\\
+    &< \sum_{j | [x_{j-1}, x_j] \cap \mathcal{F} \neq \varnothing} 1 \cdot \frac{\varepsilon}{2N} + \sum_{j | [x_{j-1}, x_j] \cap \mathcal{F} = \varnothing} \frac{1}{q} \cdot \Delta x_j\\
+    &\leq \sum_{j | [x_{j-1}, x_j] \cap \mathcal{F} \neq \varnothing} \frac{\varepsilon}{2N} + \sum_{j=1}^{K} \frac{1}{q} \cdot \Delta x_j\\
+    & = N \cdot \frac{\varepsilon}{2N} + \frac{1}{q} (x_K - x_0)\\
+    & = \frac{\varepsilon}{2} + \frac{1}{q}\\
+    &< \frac{\varepsilon}{2} +\frac{\varepsilon}{2}\\
+    & = \varepsilon
+  \end{align*}
+  And since the lower partition always equal to zero, the lower integral must also be zero. This means that the integral is zero as well. 
 \end{fproof}
 \end{document}
