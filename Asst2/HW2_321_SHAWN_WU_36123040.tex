@@ -82,18 +82,25 @@
 \end{fproof}
 
 \begin{fproof}[1(c)]
-    Consider
+    Let \([a,b] = [0,1]\)
+    Consider \(\alpha(x) = x\) on \([0,1]\). And let
     \[
     f(x) = \begin{cases}
-        -1 &\text{ if } x \in \mathbb{Q} \cap [a,b],\\
+        -1 &\text{ if } x \in \mathbb{Q} \cap [0,1],\\
         1 &\text{ otherwise,}
     \end{cases}
     \text{ and }
     g(x) = \begin{cases}
-        1 &\text{ if } x \in \mathbb{Q} \cap [a,b],\\
+        1 &\text{ if } x \in \mathbb{Q} \cap [0,1],\\
         -1 &\text{ otherwise.}
     \end{cases}
     \]
+    Then \(f+g = 0\) on \([a,b]\).
+    Since for any sub-intervals \([x_{i-1}, x_i]\) of \([0,1]\) contain both rational and irrational points, \(M_i = 1\) for both \(f\) and \(g\) for all \(i\).
+    Therefore, 
+    \begin{align*}
+        0 = \upint{0}{1}(f+g) \dx < \upint{0}{1} f \dx + \upint{0}{1} g \dx = 1 + 1 = 2.
+    \end{align*}
 \end{fproof}
 \newpage
 
