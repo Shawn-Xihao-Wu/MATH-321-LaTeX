@@ -32,7 +32,23 @@
 
 % Problem 2
 \begin{fproof}[2]
+    For the sake of contradiction, suppose that there is indeed a bounded \(\rho \in \mathcal{R}[-1,1]\) s.t. \(\int_{-1}^{1} f(x) \rho(x) \dx = f(0)\) for any \(f \in C[-1,1]\).
+    Consider the following sequence of continuous functions on \([-1,1]\),
+\[
+        f_n = \begin{cases}
+            n^2x + n & \text{ if } x \in [-\frac{1}{n}, 0],\\
+            -n^2x + n & \text{ if } x \in [0, \frac{1}{n}],\\
+            0 & \text{ otherwise.}
+        \end{cases}
+\]
+    Note that each \(f_n\) forms a thin triangle of area of exactly \(1\) on \([-1,1]\) where \(f_n(0) = n\).
 
+    Now let \(M \in \mathbb{R}\) be such that \(\sup_{x \in [-1,1]} \abs{\rho(x)} \leq M\). Such \(M\) exists as \(\rho\) is bounded on \([-1,1]\).
+    Then, for all \(n \in \mathbb{N}\),
+    \begin{align*}
+        n = f_n(0) = \int_{-1}^{1} f(x) \rho(x) \dx \leq \int_{-1}^{1} f(x) M \dx = M \int_{-1}^{1} f(x) \dx = M.
+    \end{align*}
+    This is a contradiction since \(\mathbb{N}\) is not bounded above.
 \end{fproof}
 \newpage
 
