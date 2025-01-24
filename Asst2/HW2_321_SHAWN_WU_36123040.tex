@@ -18,15 +18,82 @@
 
 % Problem 1
 \begin{fproof}[1(a)]
+    We fix \(c \in (a,b)\).
+    We need to show that LHS \(\leq\) RHS and LHS \(\geq\) RHS.
+    Let partition \(P\) on \([a,b]\) be arbitrary.
+    Then let \(P^*\) by its refinement by adding the point \(c\).
+    Then split \(P^*\) into \(P_1\) and \(P_2\), where \(P_1\) is a partition for \([a,c]\) and \(P_2\) is a partition for \([c,b]\).
+    Then,
+    \begin{align*}
+        U(P, f|_{[a,b]}) &\geq U(P^*, f|_{[a,b]}) = U(P_1, f|_{[a,c]}) + U(P_2, f|_{[c,b]}) \geq \inf_P U(P, f|_{[a,c]}) + \inf_P U(P, f|_{[c,b]})\\
+        & = \upint{a}{c} f \dalf + \upint{c}{b} f\dalf.
+    \end{align*}
+    This means that \(\upint{a}{c} f \dalf + \upint{c}{b} f\dalf\) is a lower bound for \(U(P, f|_{[a,b]})\) over all partitions of \([a,b]\), so it must be smaller than the greatest lower bound. Therefore,
+    \begin{align*}
+        \upint{a}{b} f \dalf = \inf_{P} U(P, f|_{[a,b]}) \geq \upint{a}{c} f \dalf + \upint{c}{b} f\dalf.
+    \end{align*}
+    Hence, LHS \(\geq\) RHS.
 
+    Let \(\varepsilon > 0\) be given.
+    By the property of infinum, there must be partition \(P_1\) of \([a,c]\) and partition \(P_2\) of \([c,b]\) such that
+    \begin{align*}
+        U(P_1, f|_{[a,c]}) < \upint{a}{c} f \dalf + \frac{\varepsilon}{2}, \text{ and } U(P_2, f|_{[c,b]}) < \upint{c}{b} f \dalf + \frac{\varepsilon}{2}.
+    \end{align*}
+    Note that \(P_1 \cup P_2\) is a partition for \([a,b]\).
+    Therefore,
+    \begin{align*}
+        \upint{a}{b} f \dalf \leq U(P_1 \cup P_2, f|_{[a,b]})  = U(P_1, f|_{[a,c]}) + U(P_2, f|_{[c,b]}) < \upint{a}{c} f \dalf + \upint{c}{b} f \dalf + \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary,
+    \begin{align*}
+        \upint{a}{b} f \dalf \leq \upint{a}{c} f \dalf + \upint{c}{b} f \dalf.
+    \end{align*}
+    Hence, LHS \(\leq\) RHS.
 \end{fproof}
 
 \begin{fproof}[1(b)]
+    First note that over any sub-interval \([x_{i-1},x_i] \subseteq [a,b]\), 
+    \begin{align*}
+        \sup (f+g) \leq \sup f + \sup g. \tag{\(\ast\)}
+    \end{align*}
+    To see this, let \(\varepsilon > 0\) be given.
+    Then there exists \(x \in [x_{i-1}, x_i]\) s.t. \(\sup(f + g) - \varepsilon < (f+g)(x)\).
+    Therefore,
+    \begin{align*}
+        \sup(f + g) - \varepsilon < f(x) + g(x) \leq \sup f + \sup g.
+    \end{align*}
+    And since \(\varepsilon\) is arbitrary, \(\sup(f+g) \leq \sup f + \sup g\).
+
+    Now we are ready to prove the inequality in question.
+    Again let \(\varepsilon > 0\) be given. 
+    Then there exist partitions \(P_1, P_2\) of \([a,b]\) s.t.
+    \begin{align*}
+        U(P_1, f) < \upint{a}{b} f \dalf + \frac{\varepsilon}{2}, \text{ and } U(P_2, g) < \upint{a}{b} g \dalf + \frac{\varepsilon}{2}. 
+    \end{align*}
+    Let \(P^* = P_1 \cup U_2\).
+    By \((\ast)\), \(U(P^*, f+g) \leq U(P^*, f) + U(P^*, g)\).
+    Also, by property of refinement, \(U(P^*,f) \leq U(P_1, f)\) and \(U(P^*, g) \leq U(P_2, g)\).
+    Hence,
+    \begin{align*}
+        \upint{a}{b} f \dalf \leq U(P^*, f+g) \leq U(P^*,f) + U(P^*,g) < \upint{a}{b} f \dalf + \upint{a}{b} g \dalf + \varepsilon.
+    \end{align*}
+    And since \(\varepsilon\) is arbitrary, LHS \(\leq\) RHS as desired.
 
 \end{fproof}
 
 \begin{fproof}[1(c)]
-
+    Consider
+    \[
+    f(x) = \begin{cases}
+        -1 &\text{ if } x \in \mathbb{Q} \cap [a,b],\\
+        1 &\text{ otherwise,}
+    \end{cases}
+    \text{ and }
+    g(x) = \begin{cases}
+        1 &\text{ if } x \in \mathbb{Q} \cap [a,b],\\
+        -1 &\text{ otherwise.}
+    \end{cases}
+    \]
 \end{fproof}
 \newpage
 
@@ -60,10 +127,84 @@
 
 % Problem 4
 \begin{fproof}[4(a)]
-
+    Let \(\varepsilon > 0\) be arbitrary.
+    We show that there exists a natural \(N\), such that for all \(n > N\), \(\abs{U(P_n, f) - L(P_n, f) - 0} < \varepsilon\), or simply \(U(P_n, f) - L(P_n, f) < \varepsilon\) since \(U(P_n, f) \geq L(P_n, f)\) always true.
+  
+    Since \(f \in \mathcal{R}[a,b]\), then there exists a partition \(Q = \{q_0, q_1, \cdots, q_k\}\) of \([a,b]\) where \(U(Q, f) - L(Q,f) < \varepsilon/2\).
+    Let \(l_{min}\) be the minimum length of the closed intervals \([q_{j-1}, q_j]\) where \(j = 1,\cdots,k\).
+  
+    We also know that \(f\) has to be bounded. Therefore, let \(M \geq \abs{f(x)}\) for all \(x \in [a,b]\).
+  
+    Let \(P_n = \{x_0, x_1, \cdots, x_n\}\).
+    We choose \(N\) so large that \(d_N = \frac{b-a}{N} < l_{min}\).
+    Then by generalized pigeonhole principle, each interval \([x_{i-1}, x_i]\) from \(P_n\) contains at most one point from Q. And note that for all \(n > N\), such property still holds.
+    And make \(N\) so large that \(d_N < \frac{\varepsilon/2}{2M(k-1)}\).
+  
+    Consider the partition \(Q \cup P_n\), which is a refinement of both \(Q\) and \(P_n\). 
+    Therefore, we know \[U(Q \cup P_n, f) - L(Q \cup P_n, f) \leq U(P_n, f) - L(P_n, f),\] and \[U(Q \cup P_n, f) - L(Q \cup P_n, f) \leq U(Q, f) - L(Q, f) < \varepsilon/2.\]
+    Now look more closely, we first see that there are \(k-1\) points from \(Q\) that are not the end points.
+    And therefore, there are exactly \(k-1\) intervals in the form of \([x_{i-1}, x_i]\) from \(P_n\) (\(n > N\)) that contains exactly one point of \(Q\), where \(i \in \{2, 3, \cdots, n-1\}\).
+  
+    Let \(D_n = \brac{U(P_n,f) - L(P_n, f)} - \brac{U(Q \cup P_n, f) - L(Q \cup P_n, f)}\).
+    And suppose \([x_{i-1}, x_i]\) contains exactly one \(q_j\) where \(j = 2, \cdots, k-2\), define \[\Lambda_j = \pare{\sup_{x \in [x_{i-1}, q_j]}f(x) - \inf_{x \in [x_{i-1}, q_j]}f(x)}\abs{x_{i-1} - q_j} + \pare{\sup_{x \in [q_j, x_i]}f(x) + \inf_{x \in [q_j, x_i]}f(x)}\abs{q_j - x_i}.\]
+    Notice that \(\Lambda_j \geq 0\) always.
+    
+    Therefore, we have
+    \begin{align*}
+      D_N &= \brac{U(P_N,f) - L(P_N, f)} - \brac{U(Q \cup P_N, f) - L(Q \cup P_N, f)}\\
+      & = \sum_{[x_{i-1}, x_i] \cap \{q_1, \cdots, q_j, \cdots, q_{k-1}\} \neq \varnothing} (M_i - m_i) \Delta x_i - \Lambda_j\\
+      & \leq \sum_{[x_{i-1}, x_i] \cap \{q_1, \cdots, q_j, \cdots, q_{k-1}\} \neq \varnothing} (M_i - m_i) \Delta x_i \\
+      & = d_N \cdot \pare{\sum_{[x_{i-1}, x_i] \cap \{q_1, \cdots, q_j, \cdots, q_{k-1}\} \neq \varnothing} (M_i - m_i)}\\
+      & \leq d_N \cdot \pare{\sum_{[x_{i-1}, x_i] \cap \{q_1, \cdots, q_j, \cdots, q_{k-1}\} \neq \varnothing} 2M}\\
+      & = d_N \cdot 2M(k-1)\\
+      & < \varepsilon/2.
+    \end{align*}
+    And note that as for all \(n > N\), we will still have \(D_n \leq d_n \cdot 2M(k-1) < \varepsilon/2\).
+  
+    Therefore, we see that for all \(n > N\),
+    \begin{align*}
+      U(P_n, f) - L(P_n,f) = U(Q \cup P_n, f) - L(Q \cup P_n, f) + D_n < \varepsilon/2 + \varepsilon/2 = \varepsilon.
+    \end{align*}
 \end{fproof}
 
 \begin{fproof}[4(b)]
-
+    We give a counter-example.
+    Let \([a,b] = [0,1]\). Let \(\phi\) be the Golden Ratio (\(\approx 0.618\)), a irrational number.
+    Define
+    \[
+    f(x) = \begin{cases}
+      0, \text{ if } x < \phi\\
+      1, \text{ if } x \geq \phi,
+    \end{cases}
+    \]
+    and 
+    \[
+    \alpha(x) = \begin{cases}
+      0, \text{ if } x \leq \phi\\
+      1, \text{ if } x > \phi.
+    \end{cases}
+    \]
+  
+    We can see that \(f \in \mathcal{R}(\alpha)\) on \([0,1]\).
+    Note that if we choose partition \(P = [0, \phi, 1]\), then 
+    \begin{align*}
+      U(P,f) - L(P,f) &= (M_1 - m_1)(\alpha(\phi) - \alpha(0)) + (M_2 - m_2)(\alpha(1) - \alpha(\phi)) \\
+      & = (M_2 - m_2)(\alpha(1) - \alpha(\phi)) \tag{as \(\alpha(1) = \alpha(\phi)\)}\\
+      & = 0 \tag{as \(M_2 = m_2\)}.
+    \end{align*}
+    This means that for all \(\varepsilon > 0\), there exists a partition \(P\) such that \(U(P,f) - L(P,f) < \varepsilon\). Thus, by Rudin Theorem 6.6, we have \(f \in \mathcal{R}(\alpha)\) on \([0,1]\).
+  
+    Now note that for all \(n \in \N\), all points in \(P_n\) remain to be rational.
+    Therefore, no matter how large \(n\) is, \(\phi \neq p\) for all \(p \in P_n\).
+    And there is exactly one interval \([x_{i-1}, x_i]\) from \(P_n\) that contains \(\phi\).
+  
+    Therefore, for any \(n \in \N\),
+    \begin{align*}
+      U(P_n, f, \alpha) - L(P_n, f, \alpha) &= \sum_{i=1}^{n} (M_i - m_i) \Delta \alpha_i\\
+      &= \sum_{\phi \in [x_{i-1}, x_i]} (M_i - m_i)\Delta \alpha_i\\
+      &= (1 - 0) \cdot (1-0)\\
+      & = 1
+    \end{align*}
+    Therefore, the limit cannot go to zero.
 \end{fproof}
 \end{document}
