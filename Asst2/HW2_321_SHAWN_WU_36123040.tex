@@ -128,7 +128,42 @@
 
 % Problem 3
 \begin{fproof}[3]
-  
+  First, note that the mass function of length \(x\) from the origin is given by
+\[
+    M(x) = \begin{cases}
+        \mu x & \text{ if } x \in [0, s_1),\\
+        \mu x + m_1 & \text{ if } x \in [s_1, s_2),\\
+        \mu x + m_1 + m_2 & \text{ if } x \in [s_2, 1].
+    \end{cases}
+\]
+Or simply \(M(x) = M_0(x) + M_1(x) + M_2(x)\), where
+\[
+    M_0(x) = \mu x, M_1(x) = m_1I(x-s_1), M_2 = m_2I(x-s_2), \text{ where } I(t) = 
+    \begin{cases}
+        0 & \text{ if } t < 0,\\
+        1 & \text{ if } t \geq 0.
+    \end{cases}
+\]
+  We can thus define \(M(a,b) = M(b) - M(a)\).
+  Therefore, it remains to find \(\rho(t)\) on \([0,1]\) such that \(M(x) = \int_{0}^{x} \drho(t)\).
+
+  Consider,
+  \[
+    \rho(t) = \mu t + m_1I(t-s_1) + m_2I(t-s_2).
+  \]
+  Therefore, by the linearity of Stieltjes integrals,
+  \begin{align*}
+    M(x) = \int_{0}^{x} \drho(t) = \mu \int_{0}^{x} \dt + m_1 \int_{0}^{x} \diff(I(t-s_1)) + m_2 \int_{0}^{x} \diff(I(t-s_2)).
+  \end{align*}
+  And note that by Rudin Theorem 6.15,
+  \begin{align*}
+    m_1 \int_{0}^{x} \diff(I(t-s_1)) = M_1, \text{ and }  m_2 \int_{0}^{x} \diff(I(t-s_2)) = M_2.
+  \end{align*}
+  Also note that
+  \begin{align*}
+    \mu \int_{0}^{x} \dt = \mu x = M_0(x).
+  \end{align*}
+  Therefore, \(M(x) = M_0(x) + M_1(x) + M_2(x)\) as desired.
 \end{fproof}
 \newpage
 
