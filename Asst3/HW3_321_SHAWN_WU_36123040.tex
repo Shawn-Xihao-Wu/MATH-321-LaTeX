@@ -18,15 +18,82 @@
 
 % Problem 1
 \begin{fproof}[1(a)]
+    Following the convention in Rudin Theorem 6.19 (Change of Variable), we let \(\varphi(t) = e^t\).
+    Moreoever,
+    \begin{align*}
+        f(x) &= \cos(x), &\alpha(x) &= \ln(x), \text{ and }\\
+        g(t) &= f(\varphi(t)) = \cos(e^t)
+        , &\beta(t) &= \alpha(\varphi(t)) = \ln(e^t) = t.
+    \end{align*}
+    Therefore, by Theorem 6.19,
+    \begin{align*}
+        \int_{a}^{b} \cos(e^t) \dt = \int_{a}^{b} g(t)\dbet(t) = \int_{\varphi(a)}^{\varphi(b)} f(x) \dalf(x) = \int_{e^a}^{e^b} f(x) \dalf(x).
+    \end{align*}
+    Also note that the change of integrand from \(\beta(t)\) to \(\alpha(x)\) makes sense since the domain of the natural log, \(\ln\), is \((0,+\infty)\) and we are assuming \([a,b] \subseteq (0,+\infty)\).
 
+    Now note that \(\alpha'(x) = 1/x \in \mathcal{R}[a,b]\) where \([a,b] \subseteq  (0, +\infty)\).
+    Therefore, by Rudin Theorem 6.17,
+    \begin{align*}
+         \int_{e^a}^{e^b} f(x) \dalf = \int_{e^a}^{e^b} f(x) \alpha'(x) \dx = \int_{e^a}^{e^b} \frac{\cos(x)}{x} \dx.
+    \end{align*}
+
+    Now we apply Rudin Theorem 6.22 (Integration by Parts),
+    letting \(g(x) = \cos(x), F(x) = 1/x\).
+    Hence, \(G(x) = \sin(x), f(x) = -1/x^2\).
+    Therefore,
+    \begin{align*}
+        \int_{e^a}^{e^b} \frac{\cos(x)}{x} \dx = \brac{\frac{\sin(x)}{x}}_{e^a}^{e^b} + \int_{e^a}^{e^b} \frac{\sin(x)}{x^2} \dx = e^{-b}\sin(e^b) - e^{-a}\sin(e^a) + \int_{e^a}^{e^b} \frac{\sin(x)}{x^2} \dx.
+    \end{align*}
+    Let \(r(a,b) = \int_{e^a}^{e^b} \frac{\sin(x)}{x^2} \dx\).
+    Note that
+    \begin{align*}
+        \abs{r(a,b)}& = \abs{\int_{e^a}^{e^b} \frac{\sin(x)}{x^2} \dx} \\
+        & \leq \int_{e^a}^{e^b} \abs{\frac{\sin(x)}{x^2}} \dx \tag{by Rudin Theorem 6.13(b)}\\
+        & = \int_{e^a}^{e^b} \frac{\abs{\sin(x)}}{x^2} \dx \tag{as \(x > 0\) on \([e^a, e^b]\)}\\
+        &\leq \int_{e^a}^{e^b} \frac{1}{x^2}\dx \tag{as \(\abs{\sin(x)} \leq 1\)}\\
+        &=\brac{-x^{-1}}_{e^a}^{e^b}\\
+        &=e^{-a} - e^{-b}.
+    \end{align*}
+    Therefore, we have recovered the equation in question that,
+    \begin{align*}
+        \int_{a}^{b} \cos(e^t)\dt = e^{-b}\sin(e^{b}) - e^{-a}\sin(e^a) + r(a,b),
+    \end{align*}
+    where \(\abs{r(a,b)} \leq e^{-a} - e^{-b}\).
 \end{fproof}
 
 \begin{fproof}[1(b)]
-
+    Let \(\varepsilon>0\) be given.
+    Note that for any natural numbers \(n,m\),
+    \begin{align*}
+        \abs{I_n - I_m} &= \abs{\int_{m}^{n} \cos(e^t) \dt} = \abs{e^{-n}\sin(e^n) - e^{-m}\sin(e^m) + r(m,n)}\\
+        & \leq \abs{e^{-n}\sin(e^n)} + \abs{e^{-m}\sin(e^m)} + \abs{r(m,n)}\\
+        & \leq e^{-n} \cdot 1 + e^{-m} \cdot 1 + e^{-m} - e^{-n}\\
+        & =2e^{-m}.
+    \end{align*}
+    Therefore, choose a natural \(N\) such that \(e^{N} > 2/\varepsilon\).
+    Then for all \(n,m \geq N\),
+    \(e^{m} \geq e^{N} > 2/\varepsilon \implies e^{-m} < \varepsilon/2 \implies 2e^{-m} < \varepsilon \).
+    This means that \(\abs{I_n - I_m} < \varepsilon\).
+    \((I_n)_{n \in \mathbb{N}}\) is a Cauchy sequence.
 \end{fproof}
 
 \begin{fproof}[1(c)]
+Let \(\varepsilon > 0\) be arbitrary.
+We need a natural \(N\) such that for any real \(x > N\),
+\begin{align*}
+    \abs{\int_{0}^{x} \cos(e^t) \dt - L} < \varepsilon.
+\end{align*}
+Since the sequence \(\int_{0}^{n} \cos(e^t) \dt \to L\), there exists a natural \(N_1\) such that for all \(n > N_1\), \(\abs{\int_{0}^{n} \cos(e^t) \dt - L} < \varepsilon/2.\)
+And we choose another \(N_2\) where \(e^{N_2} > 4/\varepsilon\) so that \(n > N_2 \implies e^n > e^{N_2} > 4/\varepsilon \implies 2e^{-n} < \varepsilon/2\).
+We thus let \(N = \max\{N_1, N_2\}\).
 
+Note that for any \(x > N\), there exists a natural \(n > N\) where \(x \in [n, n+1]\).
+Thus,
+\begin{align*}
+    \abs{\int_{0}^{x} \cos(e^t) \dt - L} &= \abs{\int_{0}^{n} \cos(e^t) \dt - L + \int_{n}^{x} \cos(e^t) \dt}\\
+    &\leq \abs{\int_{0}^{n} \cos(e^t) \dt - L} + \abs{\int_{n}^{x} \cos(e^t) \dt}\\
+    & < \frac{\varepsilon}{2} + e^{-x}\sin(e^x) - e^{-n}\sin(e^n) + 
+\end{align*}
 \end{fproof}
 \newpage
 
