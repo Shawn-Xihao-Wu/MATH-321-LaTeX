@@ -83,16 +83,21 @@ We need a natural \(N\) such that for any real \(x > N\),
 \begin{align*}
     \abs{\int_{0}^{x} \cos(e^t) \dt - L} < \varepsilon.
 \end{align*}
-Since the sequence \(\int_{0}^{n} \cos(e^t) \dt \to L\), there exists a natural \(N_1\) such that for all \(n > N_1\), \(\abs{\int_{0}^{n} \cos(e^t) \dt - L} < \varepsilon/2.\)
+Since the sequence \(\pare{\int_{0}^{n} \cos(e^t) \dt}_{n \in \mathbb{N}} \to L\), there exists a natural \(N_1\) such that for all \(n > N_1\), \(\abs{\int_{0}^{n} \cos(e^t) \dt - L} < \varepsilon/2.\)
 And we choose another \(N_2\) where \(e^{N_2} > 4/\varepsilon\) so that \(n > N_2 \implies e^n > e^{N_2} > 4/\varepsilon \implies 2e^{-n} < \varepsilon/2\).
-We thus let \(N = \max\{N_1, N_2\}\).
+We thus pick \(N > \max\{N_1, N_2\}\).
 
-Note that for any \(x > N\), there exists a natural \(n > N\) where \(x \in [n, n+1]\).
+Also note that the bound we have established in part(b) that \(\abs{I_n - I_m} \leq 2e^{-m}\) works for any reals \(n, m \in (0, +\infty)\) as well.
+
+Now note that for any \(x > N\), we have \(x \in [\hat{n}_x, \hat{n}_x+1]\) where \(\hat{n}_x \in \mathbb{N}\) and \(\hat{n}_x \geq N\).
 Thus,
 \begin{align*}
-    \abs{\int_{0}^{x} \cos(e^t) \dt - L} &= \abs{\int_{0}^{n} \cos(e^t) \dt - L + \int_{n}^{x} \cos(e^t) \dt}\\
-    &\leq \abs{\int_{0}^{n} \cos(e^t) \dt - L} + \abs{\int_{n}^{x} \cos(e^t) \dt}\\
-    & < \frac{\varepsilon}{2} + e^{-x}\sin(e^x) - e^{-n}\sin(e^n) + 
+    \abs{\int_{0}^{x} \cos(e^t) \dt - L} &= \abs{\int_{0}^{\hat{n}_x} \cos(e^t) \dt - L + \int_{\hat{n}_x}^{x} \cos(e^t) \dt}\\
+    &\leq \abs{\int_{0}^{\hat{n}_x} \cos(e^t) \dt - L} + \abs{\int_{\hat{n}_x}^{x} \cos(e^t) \dt}\\
+    & = \abs{\int_{0}^{\hat{n}_x} \cos(e^t) \dt - L} + \abs{I_x - I_{\hat{n}_x}} \\
+    & \leq \abs{\int_{0}^{\hat{n}_x} \cos(e^t) \dt - L} + 2e^{-\hat{n}_x}\\
+    & \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} \\
+    & = \varepsilon.
 \end{align*}
 \end{fproof}
 \newpage
