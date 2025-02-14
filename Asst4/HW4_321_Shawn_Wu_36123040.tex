@@ -18,10 +18,95 @@
 
 % Problem 1
 \begin{fproof}[1(a)]
+    We claim that \(\lim_{n\to\infty} f_n(x) = 0\) for all \(x \in \R\).
 
+    First note that if \(x = 0\), then \(f_n = n \cdot 0/(1+n^2 \cdot 0) = 0\) for all \(n\).
+    Therefore, \(\lim_{n\to\infty}f_n(0) = 0\).
+    Now if \(x \in \R\setminus\{0\}\).
+    Then \(nx \neq 0\) for any \(n\), so
+    \begin{align*}
+        \abs{f_n(x)} 
+        = \abs{\frac{nx}{1+n^2x^2}} 
+        = \frac{\abs{nx}}{1+|nx|^2}
+        = \frac{1}{\frac{1}{|nx|} + |nx|}.
+    \end{align*}
+    Note that \(1/|nx| + |nx| \to \infty\) as \(n \to \infty\).
+    Therefore, \(|f_n(x)| \to 0\) as \(n \to \infty\).
+    This proves that \(\set{f_n(x)}_{n \in \N}\) converge pointwisely and the limit is 0.
 \end{fproof}
 
 \begin{fproof}[1(b)]
+    Before we prove the whole statement, we prove a few useful results that would be helpful.
+
+    We first claim that \(\varphi(x) = |f_N(x)|\) is decreasing on \([1/N, +\infty)\) and increasing on \((-\infty, -1/N]\), for \(N\) fixed.
+    Pick any \(p,q \in \R\) such that \(N < p < q\), which also means that \(1/N > 1/p > 1/q\).
+    We want to show that \(\varphi(1/p) < \varphi(1/q)\).
+    Note that
+    \begin{align*}
+        \varphi(1/p) &= \frac{N/p}{1 + (N/p)^2} = \frac{1}{\frac{1}{N/p} + N/p} = \frac{1}{\frac{p^2+N^2}{Np}} = \frac{1}{\frac{qp^2+qN^2}{Npq}},\\
+        \varphi(1/q) &=\frac{N/q}{1 + (N/q)^2} = \frac{1}{\frac{1}{N/q} + N/q} = \frac{1}{\frac{q^2 + N^2}{Nq}} = \frac{1}{\frac{pq^2 + pN^2}{Nqp}}.
+    \end{align*}
+    Also note that
+    \begin{align*}
+        \frac{qp^2 + qN^2}{Npq} - \frac{pq^2 + pN^2}{Npq} = \frac{pq(p-q) + N^2(q-p)}{Npq} = \frac{(q-p)(pq - N^2)}{Npq} > 0,
+    \end{align*}
+    as \(p < q\), and \(N^2 < pq\) from \(N<p,q\).
+    Therefore, 
+    \begin{align*}
+        \frac{qp^2 + qN^2}{Npq} > \frac{pq^2 + pN^2}{Npq} \implies \frac{1}{\frac{qp^2 + qN^2}{Npq}} < \frac{1}{\frac{pq^2 + pN^2}{Npq}} \implies \varphi(1/p) < \varphi(1/q).
+    \end{align*}
+    \(\varphi\) is decreasing on \([1/N, +\infty)\) as desired, and by a similar argument, \(\varphi\) is increasing on \((-\infty, -1/N]\).
+
+    % Also notice that for a fixed \(X \in \R\), \(\psi(n)= |f_n(X)|\) is also a decreasing function on \(\left[\frac{1}{|X|}, +\infty\right)\), since \(|f_n(x)|\) over \(\R_{\geq 0}\) is the same as a function of \(n\) for a fixed \(x\) and as a function of \(x\) for a fixed \(n\).
+
+    \begin{center}
+        \(\ast~\ast~\ast\)
+    \end{center}
+
+    We now first prove the backward direction.
+    Suppose that \(0 \notin A'\).
+    Then there exists \(\delta>0\) such that \((-\delta, +\delta) \cap A = \varnothing.\)
+    Thus, we can show that \(\set{f_n(x)}\) converges uniformly to 0 on \(A\) by showing that \(\set{f_n(x)}\) uniformly converges to \(0\) on \(\R \setminus (-\delta, +\delta),\) since \(A \subseteq \R \setminus (-\delta, +\delta)\).
+    Let \(I = \R \setminus (-\delta, +\delta)\).
+
+    Given \(\varepsilon>0\).
+    We want a natural \(N\) such that \(n \geq N\) implies \(|f_n(x)| < \varepsilon\) for all \(x \in I\).
+    Consider the points \(x = \pm\delta\).
+    First there must be a natural \(N_1\) such that \(\delta \in [1/N_1, +\infty)\).
+    Therefore, by previous results \(\varphi(x) = |f_{N_1}(x)|\) is decreasing on \([1/N_1, +\infty)\) and increasing on \((-\infty, -1/N_1]\).
+    Since \(-\delta <-1/N_1 < 1/N_1 < \delta\), \(\varphi(x)\) is decreasing on \([\delta, +\infty)\) and increasing on \((-\infty, -\delta]\) as well, i.e., \(\sup_{x \in I} \varphi(x) = \varphi(\delta) = \varphi(-\delta).\)
+    And since \(\set{f_n(\delta)} \to 0\) as \(n \to \infty\), there must be another \(N_2\) such that \(n \geq N_2\) implies that \(|f_n(\delta)|=|f_n(-\delta)| < \varepsilon \). 
+    We thus take \(N > \max\{N_1, N_2\}\).
+    Note that \(N > N_1 \implies 1/N < 1/N_1 < \delta\).
+    Hence for any \(n \geq N\), \(\sup_{x\in I} f_n(x) = |f_n(\delta)| = |f_n(-\delta)| < \varepsilon\).
+    This proves that the function converges uniformly to zero.
+
+    \begin{center}
+        \(\ast~\ast~\ast\)
+    \end{center}
+    
+    We now proceed to the forward direction.
+    We do proof by contraposition.
+    Suppose that \(0 \in A'\).
+    Then there exists a sequence \((a_i)_{i \in \N} \subseteq A\) converges to 0 where \(|a_{i+1}| \leq |a_i|\) for all \(i\).
+    To see this, note that there exists \(x_1 \in (-1, 1) \cap A\); set \(a_1 = x_1\), and for any \(i \geq 2\), there exists \(x_i \in (\max\{-1/i, -|x_{i-1}|\}, \min\{1/i, |x_{i-1}|\})\); set \(a_i = x_i\).
+
+    We want to show that \(\set{f_n(x)}\) does not converge uniformly to \(0\), i.e., there exists \(\varepsilon > 0\), and there exist infinitely many \(N\)'s such that for each \(N\), \(|f_N(x)| > \varepsilon\) for some \(x\).
+
+    We pick \(\varepsilon = 1/4\). Now consider the \((a_i)_{i \in \N}\) generated before. Note that for each \(a_i\), there exists a natural \(N\) such that \(|a_i| \in [1/N, 1/(N-1)]\).
+    And note that \(\varphi(x)= |f_N(x)|\) is decreasing on \([1/N, +\infty)\) and increasing on \((-\infty, -1/N]\), and note that fact that \(\varphi(x)\) is even.
+    Thus,
+    \begin{align*}
+        f_N\left(\frac{1}{N-1}\right) \leq f_N(a_i) \leq f_N\left(\frac{1}{N}\right).
+    \end{align*}
+    Also note that for any natural \(N\geq 2\),
+    \begin{align*}
+        f_N \pare{\frac{1}{N-1}} &= \frac{\frac{N}{N-1}}{1 + \pare{\frac{N}{N-1}}^2} = \frac{1}{\frac{N-1}{N} + \frac{N}{N-1}} = \frac{N(N-1)}{(N-1)^2 + N^2} = \frac{N^2 - N}{2(N^2 - N) + 1} = \frac{1}{2 + \frac{1}{N^2-N}} \\
+        &> \varepsilon.
+    \end{align*}
+    To put everything together, since \((a_i)\) is such a sequence that the absolute value is decreasing and converge to zero, then it generates an infinite sequence of \((N_i)_{i\in \N}\) where each \(|a_i| \in [1/N_i, 1/(N_i-1)]\), and there are infinitely many distinct elements in the sequence \((N_i)_{i \in \N}\).
+    And for each \(N_i\), \[f_{N_i}(a_i) \geq f_{N_i}\left(\frac{1}{N-1}\right) > \varepsilon.\]
+    This completes the proof that \(\set{f_n(x)}\) does not converge uniformly on \(A\).
 
 \end{fproof}
 \newpage
