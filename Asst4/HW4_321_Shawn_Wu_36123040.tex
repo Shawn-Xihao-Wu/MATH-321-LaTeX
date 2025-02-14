@@ -115,15 +115,58 @@
 
 % Problem 2
 \begin{fproof}[2(a)]
-
+    First note that if \(x = 0\) or \(x = 1\), then for any \(n \in \N\) and any \(x \in [0,1]\), \(f_n(x) = 0\).
+    If however, \(x \in (0,1)\), then \(0< 1 - x^4 < 1\), i.e., \(1-x^4 = 1/(1+p)\) for some \(p > 0\).
+    Therefore, by Rudin Theorem 3.20(d), for any fixed \(x \in [0,1]\)
+    \begin{align*}
+        \lim_{n\to\infty} n^c(1-x^4)^n = \lim_{n\to\infty} \frac{n^c}{(1+p)^n} = 0,
+    \end{align*}
+    so,
+    \begin{align*}
+        \lim_{n\to\infty}n^cx^3(1-x^4)^n = \lim_{n\to\infty} x^3 \cdot \lim_{n\to\infty} \frac{n^c}{(1+p)^n} = x^3 \cdot 0 = 0.
+    \end{align*}
+    The limit function \(f(x)\) thus exists and \(f(x) = 0\) for all \(x \in [0,1].\)
 \end{fproof}
 
 \begin{fproof}[2(b)]
+    We claim that the convergence is not uniform for \(c \geq 3/4\) but it is uniform for \(c < 3/4\).
 
+    For \(c \geq 3/4\), let \(x_n = n^{-1/4}\), then
+    \begin{align*}
+        f_n(x_n) = n^{c-\frac{3}{4}}\left(1 - \frac{1}{n}\right)^n.
+    \end{align*}
+    Note that \((1 - 1/n)^n \to e^{-1}\) as \(n \to \infty\).
+    Therefore, when \(c = 3/4\), \(f_n(x_n) \to e^{-1}\) as \(n \to \infty\).
+    And when \(c > 3/4\), \(n^{c-3/4}\) diverges, so \(f_n(x_n)\) diverges as \(n \to\infty\).
+    In either case, \(f_n(x_n)\) is at least \(e^{-1}/2\) for infinitely many \(n\)'s. This concludes that \(\set{f_n(x)}\) cannot be converging to zero uniformly in this case.
+
+    For \(c < 3/4\). First note that \(1+t \leq e^t\) for all \(x \in \R\).
+    We also set \(y = nx^4\). Thus,
+    \begin{align*}
+        \abs{f_n(x)} = \abs{n^cx^3(1-x^4)^n} \leq \abs{n^cx^3e^{-nx^4}} = \abs{n^{c-\frac{3}{4}}(nx^4)^{\frac{3}{4}}e^{-nx^4}} = \abs{n^{c-\frac{3}{4}}y^{\frac{3}{4}}e^{-y}}.
+    \end{align*}
+    Note that \(y^{3/4}e^{-y} \to 0\) as exponential grows faster than polynomial. Therefore the function \(\varphi(y) =  y^{3/4}e^{-y}\) is bounded.
+    Also note that \(n^{c-3/4} \to 0\) as \(n \to \infty\) since \(c-3/4 < 0\).
+    Hence, \(\abs{n^{c-3/4}y^{3/4}e^{-y}} \to 0\) as \(n \to \infty\).
+    This means that \(\sup_{x\in [0,1]}\abs{f_n(x)} \to 0\), which shows that \(\set{f_n(x)}\) converges uniformly to zero in this case.
 \end{fproof}
 
 \begin{fproof}[2(c)]
-
+    First note that \[\int_{0}^{1}f(x) \dx = \int_{0}^{1} 0 \dx = 0.\]
+    We then use change of variable and let \(g(x) = 1-x^4\), so \(g'(x) = -4x^3\); note that the derivative is continuous.
+    Thus,
+    \begin{align*}
+        \int_{0}^{1}x^3(1-x^4)^n \dx &= \frac{-1}{4}\int_{0}^{1}(1-x^4)^n(-4x^3) \dx = \frac{-1}{4} \int_{0}^{1} (g(x))^n g'(x) \dx \\
+        &= \frac{-1}{4} \int_{g(0)}^{g(1)} u^n \du = \frac{-1}{4}\int_{1}^{0} u^n \du\\
+        & = \frac{-1}{4} \brac{\frac{u^{n+1}}{n+1}}_{u=1}^{u=0}\\
+        &= \frac{1}{4} \cdot \frac{1}{n+1}.
+    \end{align*}
+    Therefore, 
+    \begin{align*}
+        \int_{0}^{1} f_n(x) \dx = n^c \int_{0}^{1}x^3(1-x^4)^n \dx = \frac{n^c}{4(n+1)}.
+    \end{align*}
+    
+    And it's clear that the above integral converges to \(0\) iff \(c < 1\).
 \end{fproof}
 \newpage
 
@@ -135,6 +178,22 @@
 
 % Problem 4
 \begin{fproof}[4(a)]
+    First note that for all \(x \in \R\), \(0 \leq \varphi(x) \leq 1\).
+    Also note that \(\sum_{n=1}^{\infty}\frac{1}{2^n}\) is a geometric series hence converge and equals \(1\).
+    Now fix \(t \in \R\).
+    Note that \(f_1(t)\) is a series of non-negative terms that's bounded above,
+    \begin{align*}
+        0 \leq f_1(t) =  \sum_{n=1}^{\infty} \frac{\varphi(3^{2n-2}t)}{2^n} \leq \sum_{n=1}^{\infty} \frac{1}{2^n} = 1.
+    \end{align*}
+    So, \(f_1(t)\) converges, which means that \(f_1\) is well-defined.
+    With a similar reasoning, \(f_2\) is well-defined as well.
+    And \(0 \leq f_i(t) \leq 1\) for all \(t\).
+
+    \begin{center}
+        \(\ast~\ast~\ast\)
+    \end{center}
+
+
 
 \end{fproof}
 
