@@ -106,7 +106,7 @@
         f_N \pare{\frac{1}{N-1}} &= \frac{\frac{N}{N-1}}{1 + \pare{\frac{N}{N-1}}^2} = \frac{1}{\frac{N-1}{N} + \frac{N}{N-1}} = \frac{N(N-1)}{(N-1)^2 + N^2} = \frac{N^2 - N}{2(N^2 - N) + 1} = \frac{1}{2 + \frac{1}{N^2-N}} \\
         &> \varepsilon.
     \end{align*}
-    To put everything together, since \((a_i)\) is such a sequence that the absolute value is decreasing and converge to zero, then it generates an infinite sequence of \((N_i)_{i\in \N}\) where each \(|a_i| \in [1/N_i, 1/(N_i-1)]\), and there are infinitely many distinct elements in the sequence \((N_i)_{i \in \N}\).
+    Putting everything together, we know that since \((a_i)\) is such a sequence that its absolute value is decreasing and it converges to zero, then it generates an infinite sequence of \((N_i)_{i\in \N}\) where each \(|a_i| \in [1/N_i, 1/(N_i-1)]\), and there are infinitely many distinct elements in the sequence \((N_i)_{i \in \N}\).
     And for each \(N_i\), \[f_{N_i}(a_i) \geq f_{N_i}\left(\frac{1}{N-1}\right) > \varepsilon.\]
     This completes the proof that \(\set{f_n(x)}\) does not converge uniformly on \(A\).
 
@@ -172,7 +172,25 @@
 
 % Problem 3
 \begin{fproof}[3]
-  
+  Given \(\varepsilon>0\).
+  Since \(g\) is continuous at 0, there exists \(\delta>0\) s.t. \(\abs{g(x)- g(0)}<\varepsilon\) whenever \(|x| < \delta\).
+  And by (iii), there exists a natural \(N\) s.t. \(f_n(x) < \varepsilon\) for all \(n \geq N\) and for all \(x \in [-1, -\delta] \cup [+\delta, +1]\).
+  Also let \(M = \sup_{x \in [-1,1]} g(x)\).
+  Therefore, for all \(n \geq N\),
+  \begin{align*}
+    &\abs{\int_{-1}^{1}f_n(x)g(x) - g(0) \dx}\\
+   =& \abs{\int_{-1}^{1}f_n(x)[g(x)-g(0)] \dx}\\
+   \leq & \abs{\int_{-1}^{-\delta} f_n(x)[g(x)-g(0)] \dx} + \abs{\int_{-\delta}^{+\delta} f_n(x)[g(x)-g(0)]\dx} + \abs{\int_{+\delta}^{+1} f_n(x)[g(x)-g(0)]\dx}\\
+   \leq &\int_{-1}^{-\delta} f_n(x)\abs{g(x)-g(0)}\dx + \int_{-\delta}^{+\delta} f_n(x)\abs{g(x)-g(0)}\dx + \int_{+\delta}^{+1} f_n(x)\abs{g(x)-g(0)}\dx\\
+   \leq& \int_{-1}^{-\delta} \varepsilon\abs{g(x)-g(0)}\dx + \int_{-\delta}^{+\delta} f_n(x) \varepsilon \dx + \int_{+\delta}^{+1} \varepsilon\abs{g(x)-g(0)}\dx \tag{by above assumptions}\\
+   \leq& \varepsilon\int_{-1}^{-\delta} \abs{g(x)-g(0)}\dx + \varepsilon\int_{-\delta}^{+\delta} f_n(x) \dx + \varepsilon\int_{+\delta}^{+1}\abs{g(x)-g(0)}\dx\\
+   \leq & \varepsilon 2M(1-\delta) + \varepsilon \int_{-1}^{1} f_n(x) + \varepsilon 2M(1-\delta) \tag{since \(f_n(x) \geq 0\)}\\
+   \leq & \varepsilon4M(1-\delta) + \varepsilon\\
+   \leq & \varepsilon4M + \varepsilon\\
+   \leq & \varepsilon(4M+1).
+  \end{align*}
+  This concludes the proof.
+
 \end{fproof}
 \newpage
 
