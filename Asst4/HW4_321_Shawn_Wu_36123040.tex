@@ -199,7 +199,7 @@
     First note that for all \(x \in \R\), \(0 \leq \varphi(x) \leq 1\).
     Also note that \(\sum_{n=1}^{\infty}\frac{1}{2^n}\) is a geometric series hence converge and equals \(1\).
     Now fix \(t \in \R\).
-    Note that \(f_1(t)\) is a series of non-negative terms that's bounded above,
+    Note that \(f_1(t)\) is a series of non-negative terms that's bounded above, thus
     \begin{align*}
         0 \leq f_1(t) =  \sum_{n=1}^{\infty} \frac{\varphi(3^{2n-2}t)}{2^n} \leq \sum_{n=1}^{\infty} \frac{1}{2^n} = 1.
     \end{align*}
@@ -211,15 +211,37 @@
         \(\ast~\ast~\ast\)
     \end{center}
 
+    We show that \(f_1(t)\) is continuous by showing that it is the limit of a sequence of uniform convergent continuous functions; with a similar reasoning, \(f_2(t)\) is continuous as well.
+    Let 
+    \begin{align*}
+        S_I(t) = \sum_{i=1}^{I} \frac{\varphi(3^{2i-2}t)}{2^i}.
+    \end{align*}
+    Note that each \(S_I(t)\) is a continuous function on \(\R\), since it is a finite sum of compositions of continuous functions.
 
+    Now let \(\varepsilon > 0\) be given.
+    Note that \(\sum_{i=1}^{\infty} 1/2^i\) converges, so there exists a natural \(N\) s.t. \(I, J \geq N\) implies \[\abs{\sum_{i=I}^{J} \frac{1}{2^i}} < \varepsilon.\]
+    And note that for any \(I,J \geq N\),
+    \begin{align*}
+        \abs{S_I(t) - S_J(t)}= \abs{\sum_{i=I}^{J} \frac{\varphi(3^{2i-2})}{2^i} } \leq \abs{\sum_{i=I}^{J} \frac{1}{2^i}} < \varepsilon.
+    \end{align*}
+    Therefore, by the Cauchy Criterion, \(\set{S_I}_{I\in \N}\) converges uniformly.
+    Since \(f_1(t)\) is its limiting function, we conclude that \(f_1(t)\) must be continuous as well, by Rudin Theorem 7.12.
 
 \end{fproof}
 
 \begin{fproof}[4(b)]
-
+    sorry I didn't have the time to finish this question...
 \end{fproof}
 
 \begin{fproof}[4(c)]
-
+    We just need to follow the results established before.
+    Note that
+    \begin{align*}
+        f(c) &= (f_1(c), f_2(c))\\
+        &= \pare{\sum_{n=1}^{\infty} \frac{\varphi(3^{2n-2}c)}{2^n},\sum_{n=1}^{\infty} \frac{\varphi(3^{2n-1}c)}{2^n}}\\
+        &=\pare{\sum_{n=1}^{\infty} \frac{c_{2n-1}}{2^n} ,\sum_{n=1}^{\infty} \frac{c_{2n}}{2^n}} \tag{by 4(b)}\\
+        &=\pare{\sum_{n=1}^{\infty} \frac{a_n}{2^n}, \sum_{n=1}^{\infty} \frac{b_n}{2^n}} \tag{by definition of \(c_i\)}\\
+        &= (a,b).
+    \end{align*}
 \end{fproof}
 \end{document}
