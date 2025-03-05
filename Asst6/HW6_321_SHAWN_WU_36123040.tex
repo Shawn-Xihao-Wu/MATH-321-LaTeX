@@ -18,6 +18,85 @@
 
 % Problem 1
 \begin{fproof}[1(a)]
+    Let \(\Gamma = \set{\cC(X):\norm{f}\leq 1 \tand N_{\alpha}(f) \leq 1}\).
+    We appeal to HW5 Problem 3.
+    We show that \(\Gamma\) is compact by showing that it is closed, bounded, and equicontinous, as \(\Gamma \subseteq \cC(X)\) and \(X\) is compact.
+
+    \textbf{Closed:}
+    We show that \(\Gamma' \subseteq \Gamma\).
+    Pick any \(g \in \Gamma'\).
+    There exists a sequence of functions \((g_n) \subseteq \Gamma \setminus \{g\}\) that converges to \(g\) w.r.t. the supremum norm, and this means that \(g_n \to g\) uniformly by Rudin Theorem 7.7.
+
+    We show that \(g \in \Gamma\), i.e., \(\norm{g} \leq 1\) and \(N_{\alpha}(g) \leq 1\).
+
+    Given any \(\varepsilon > 0\).
+    We know there exists a natural \(N\) s.t. \(\norm{g - g_N} < \varepsilon\).
+    Also,
+    \begin{align*}
+        \norm{g} = \norm{g - g_N + g_N} \leq \norm{g-g_N} + \norm{g_N} < 1 + \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, \(\norm{g} \leq 1\).
+
+    Now again given any \(\varepsilon > 0\).
+    Pick any \(x,y \in X\) where \(x \neq y\).
+    Then first note that \(d(x,y)>0\) since \(x\neq y\), so \(d(x,y)^{\alpha}\) is a real number greater than zero.
+    And since \(g_n \to g\) uniformly, there exists a natural \(N\) s.t., \(\abs{g_N(t)-g(t)} < \varepsilon \cdot d(x,y)^{\alpha}/2\), for all \(t \in X\).
+    Therefore,
+    \begin{align*}
+        \frac{\abs{g(x)-g(y)}}{d(x,y)^{\alpha}} &= \frac{\abs{g(x)-g_N(x) + g_N(y) -g(y) + g_N(x)-g_N(y)}}{d(x,y)^{\alpha}}\\
+        & \leq \frac{\abs{g(x)-g_N(x)}}{d(x,y)^{\alpha}} + \frac{\abs{g_N(y)-g(y)}}{d(x,y)^{\alpha}} + \frac{\abs{g_N(x)-g_N(y)}}{d(x,y)^{\alpha}}\\
+        &<\frac{\varepsilon \cdot d(x,y)^{\alpha}}{2 d(x,y)^{\alpha}} + \frac{\varepsilon \cdot d(x,y)^{\alpha}}{2 d(x,y)^{\alpha}} + 1\\
+        &= 1 + \varepsilon.
+    \end{align*}
+    Since \(\varepsilon\) is arbitrary, \(\abs{g(x)-g(y)}/d(x,y)^{\alpha} \leq 1\) for this particular pair of \(x\) and \(y\).
+    And since \(x,y\) is arbitrary,
+    then 1 is a upper bound of the set \(A\) where 
+    \begin{align*}
+        A = \set{\frac{\abs{g(x)-g(y)}}{d(x,y)^{\alpha}} : x,y \in X, x\neq y},
+    \end{align*}
+    which means that
+    \begin{align*}
+        N_{\alpha}(g) = \sup A \leq 1,
+    \end{align*}
+    as the supremum must be the least upper bound.
+
+    % Suppose, for the sake of contradiction, \(N_{\alpha}(g) > 1\), i.e., \(N_{\alpha}(g) = 1 + \delta\) for some \(\delta > 0\).
+    % This means that there exist \(x_0,y_0 \in X, x_0 \neq y_0\) s.t.,
+    % \begin{align*}
+    %     \frac{\abs{g(x_0)-g(y_0)}}{d(x_0, y_0)^{\alpha}} > 1 + \delta/2,
+    % \end{align*}
+    % as \(1 + \delta/2 < N_{\alpha}(g)\) so \(1 + \delta/2\) is not an upper bound.
+
+    % Set \(\lambda = (\delta/2)d(x_0,y_0)^{\alpha}\).
+    % Note that since \(x_0 \neq y_0\), \(d(x_0, y_0) > 0\).
+    % Also, as \(\alpha > 0\), \(d(x_0, y_0)^{\alpha} > 0\).
+    % Thus, \(\lambda > 0\).
+    % And by rearranging the above inequality,
+    % \begin{align*}
+    %     \abs{g(x_0)-g(y_0)} > d(x_0, y_0)^{\alpha} + \lambda.
+    % \end{align*}
+    % And since \(g_n \to g\) uniformly, there exists a natural \(N\) s.t. for all \(x \in X\),
+    % \begin{align*}
+    %     \abs{g_N(x) - g(x)} < \frac{\lambda}{2}.
+    % \end{align*}
+    % This gives in particular that,
+    % \begin{align*}
+    %     g(x_0)- \frac{\lambda}{2} < g_N(x_0) < g(x_0) + \frac{\lambda}{2} \text{  and  } g(y_0) - \frac{\lambda}{2} < g_N(y_0) < g(y_0)+ \frac{\lambda}{2}.
+    % \end{align*}
+    % This gives that
+
+    \textbf{Bounded:}
+    It's enough to show that \(\Gamma\) can be covered in an open neighborhood in the metric space \((\cC(X), \norm{\cdot})\).
+    Let \(\opb{0}{2}\) be the open ball centered at the zero function with a radius 2.
+    We claim that 
+    \begin{align*}
+        \opb{0}{2} \supseteq \Gamma.
+    \end{align*}
+    To see this, pick any \(f \in \Gamma\), then \(\norm{f} = \norm{f - 0} \leq 1 < 2\).
+    Therefore, \(f \in \opb{0}{2}\).
+
+    \textbf{Equicontinous:}
+    
 
 \end{fproof}
 
