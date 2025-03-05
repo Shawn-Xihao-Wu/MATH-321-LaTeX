@@ -148,6 +148,30 @@ This proves the negation of the condition for equicontinuity, so \(\Lambda\) is 
 
 % Problem 2
 \begin{fproof}[2]
+First note that for any non-constant polynomial \(p\), \(\lim_{x \to \infty} p(x) = +\infty\) if the leading coefficient of \(p\) is positive, and \(\lim_{x \to \infty} p(x) = -\infty\) if the leading coefficient of \(p\) is negative.
+
+Now suppose we have a sequence of polynomials \(p_n \to f\) uniformly on the whole \(\R\).
+Then by adopting the Cauchy Criteria, we see that there exists a natural \(N\) s.t. 
+\begin{align*}
+    \abs{p_N(x) - p_m(x)} < 1,
+\end{align*}
+for any \(m \geq N\) and \(x \in \R\).
+Note that for each \(m \geq N\), \(p_N - p_m\) is also a polynomial, but it doesn't diverge to infinity. This means that \(p_N - p_m\)'s must be constant polynomials, which means that for \(m \geq N\), \(p_m\)'s only differ by constants.
+
+Let \(q\) be the polynomial \(p_N\) without the constant term. Let \(a_0 = \lim_{n \to \infty} p_n(0)\).
+We then claim that \(f(x) = q(x) + a_0\), which is a polynomial.
+It's suffice to show that \(q(x) + a_0\) is the point-wise limit of the sequence of polynomials \((p_n)\).
+Pick any \(t \in \R\).
+Consider the sequence of real numbers \((p_n(t))_{n \in \N}\).
+Based on previous discussion, we know that for \(n \geq N\), \(p_n\)'s are polynomials that only differ by constant terms.
+So, for \(n \geq N\),
+\begin{align*}
+    p_n(t) = q(t) + p_n(0).
+\end{align*}
+And we know that \(p_n(0) \to a_0\) as \(n \to \infty\).
+Therefore, \(q(t) + p_n(0) \to q(t) + a_0\), which means that \(p_n(t) \to q(t) + a_0\) as \(n \to \infty\).
+Hence, \(q(x) + a_0\) is indeed the point-wise limit of \((p_n)_{n \in \N}\).
+And since the limit of a sequence real numbers is unique, \(f(x)\) for each \(x\) is therefore a unique real number. This means the limit function \(f\) is unique, which gives that \(f(x) = q(x) + a_0\) and proves that it is a polynomial.
 
 \end{fproof}
 \newpage
