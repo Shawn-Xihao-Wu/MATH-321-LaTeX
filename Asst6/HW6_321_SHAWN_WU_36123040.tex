@@ -119,6 +119,29 @@ This proves equicontinuity and concludes the proof of compactness of \(\Gamma\).
 \end{fproof}
 
 \begin{fproof}[1(b)]
+Let \(\Pi = \set{f \in \cC[0,1]: \norm{f} \leq 1}\).
+It's suffice to find a subset \(\Lambda\) of \(\Pi\) that is not equicontinous.
+This is due to the fact that if \(\Pi\) is equicontinous, then every subset of \(\Pi\) is as well.
+
+Let \(\Lambda\) be the sequence of functions \(\set{g_n}_{n \in \N}\) where for each \(n\), \(g_n:[0,1] \to \R\) and,
+\[
+    g_n(x) =
+\begin{cases}
+    -nx + 1 & \text{ if } 0 \leq x \leq \frac{1}{n},\\
+    0 & \text{ otherwise}.
+\end{cases}
+\]
+It's clear that each \(\norm{g_n} \leq 1\) since \(0 \leq g_n(x) \leq 1\) for all \(n \in \N\) and all \(x \in [0,1]\).
+
+Now let \(\delta_n = 1/n\).
+We see that for each \(n\),
+\(d(0, 1/(n+1)) = 1/(n+1) < \delta_n\), and
+\begin{align*}
+    \abs{g_{n+1}(0) - g_{n+1}\pare{\frac{1}{n+1}}} = 1.
+\end{align*}
+Therefore, we see that there exists an \(\varepsilon = 1 > 0\), s.t. for any \(\delta > 0\),
+we can pick two points \(x=0, y=1/(n+1) \in [0,1]\) with \(d(x, y) < \delta_n < \delta\) for some \(n\), and we can pick a function \(g_{n+1} \in \Lambda\) for the same \(n\), s.t. \(\abs{g_{n+1}(x) - g_{n+1}(y)} \geq \varepsilon\).
+This proves the negation of the condition for equicontinuity, so \(\Lambda\) is not equicontinous. Hence, the set \(\Pi\) is not equicontinous, which proves it is also not compact by HW5 Problem 3.
 
 \end{fproof}
 \newpage
