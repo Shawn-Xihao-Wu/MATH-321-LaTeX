@@ -356,6 +356,61 @@ This concludes the step that \(f_n \to f\) uniformly on \(K\), which concludes t
 
 % Problem 5
 \begin{fproof}[5]
+We first show that \(\int_{0}^{2 \pi} e^{i n \theta} \dth = 0\) for \(n \in \N_{\geq 1}\).
+Note that for each fixed \(n\),
+\begin{align*}
+    \int_{0}^{2 \pi} e^{i n \theta} \dth 
+    & = \int_{0}^{2 \pi} \cos(n \theta) + i \sin(n \theta) \dth \tag{by Euler's identity} \\
+    &= \int_{0}^{2 \pi} \cos(n \theta) \dth + i \int_{0}^{2 \pi} \sin(n \theta) \dth \tag{by the def of complex integrals}\\
+    &= \brac{\frac{\sin(n \theta)}{n}}_{0}^{2 \pi} + i \brac{\frac{-\cos(n \theta)}{n}}_{0}^{2 \pi} \tag{since \(n > 0\)}\\
+    &= \frac{0}{n} + i \frac{0}{n}\\
+    &=0.
+\end{align*}
+Therefore, for any \(\varphi \in \cA\).
+\begin{align*}
+    \int_{0}^{2 \pi} \varphi(e^{i  \theta})e^{i \theta} \dth
+    &= \int_{0}^{2 \pi} \pare{\sum_{n=0}^{N} c_ne^{in \theta}}e^{i \theta} \dth\\
+    &= \int_{0}^{2 \pi} \sum_{n=0}^{N} c_n e^{i (n+1) \theta} \dth\\
+    &= \sum_{n=0}^{N} c_n \int_{0}^{2 \pi} e^{i (n+1) \theta} \dth\\
+    &= \sum_{n=0}^{N} c_n \cdot 0 \tag{since \(n+1 > 0\)}\\
+    &= 0.
+\end{align*}
+Therefore, if \(f \in \overline{\cA}\), there exists a sequence of functions \((\varphi_n) \subseteq \cA\) that converges to \(f\) uniformly on \(K\).
+This means that \(\varphi_n(z)z\) converges uniformly to \(f(z)z\) as well on \(K\).
+To see this, given any \(\varepsilon > 0\).
+Since \(\varphi_n \to f\) uniformly, there exists a natural \(N\) such that \(n \geq N\) implies
+\begin{align*}
+    \abs{\varphi_n(z) - f(z)} < \varepsilon,
+\end{align*}
+for all \(z \in K\).
+This means that for all \(n \geq N\),
+\begin{align*}
+    \abs{\varphi_n(z)z - f(z)z} = \abs{z}\abs{\varphi_n(z) - f(z)} = 1 \cdot \abs{\varphi_n(z) - f(z)} < \varepsilon,
+\end{align*}
+for all \(z \in K\).
+Therefore, by Rudin Theorem 7.16 (\textit{I am assuming this also works on complex valued functions and their integrals}),
+\begin{align*}
+    \int_{0}^{2 \pi} f(e^{i  \theta})e^{i \theta} \dth
+    &= \lim_{n \to \infty} \int_{0}^{2 \pi}  \varphi_n(e^{i  \theta})e^{i  \theta} \dth = \lim_{n \to \infty} 0 = 0. \tag{\(\ast\)}
+\end{align*}
+Therefore, if we can find a continuous \(f\) such that \((\ast)\) is false, then by contraposition, \(f \notin \overline{\cA}\).
 
+Consider \(f: K \to \C\) where \(f(z) = \overline{z}\).
+First, \(f\) is continuous on \(K\).
+Pick any \(z_0 \in K\).
+Given any \(\varepsilon > 0\).
+Let \(\delta = \varepsilon\).
+So, if \(\abs{z - z_0} < \delta\),
+then
+\begin{align*}
+    \abs{f(z) - f(z_0)} = \abs{\overline{z} - \overline{z_0}} = \abs{\overline{z - z_0}} = \abs{z - z_0} < \delta = \varepsilon.
+\end{align*}
+This concludes that \(f\) is continuous on \(K\).
+
+Also, note that
+\begin{align*}
+    \int_{0}^{2 \pi} f(e^{i \theta})e^{i \theta} \dth = \int_{0}^{2 \pi} e^{-i \theta} e^{i \theta} \dth = \int_{0}^{2 \pi} 1 \dth = 2 \pi \neq 0.
+\end{align*}
+Therefore, \(f \notin \overline{\cA}\). This concludes the proof.
 \end{fproof}
 \end{document}
