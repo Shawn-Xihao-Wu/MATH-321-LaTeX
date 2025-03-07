@@ -296,7 +296,61 @@ This concludes the proof that \(\alpha(x) = \beta(x)\) on the whole \([0,1]\).
 
 % Problem 4
 \begin{fproof}[4]
+Note that the algebra \(\cA\) in question either vanishes at no points in \(K\) or it vanishes at some points in \(K\). If it's the former, then by Stone-Weistrass Theorem, \(\overline{\cA}\) consists of all continuous real-valued functions on \(K\); this is case (i). If, however, \(\cA\) does vanish at some point in \(K\), say \(p \in K\). Let \(\cF\) by the set of all continuous functions on \(K\) that vanish at \(p\). For case (ii), it remains to show that \(\overline{\cA} = \cF\).
 
+Pick any \(f \in \overline{\cA}\).
+This means that there exists a sequence of functions \((f_n) \subseteq \cA\) that converges uniformly to \(f\).
+This means that \(f\) is the limit function of \(f_n\), i.e.,
+\begin{align*}
+    f(p) = \lim_{n \to \infty} f_n(p) = \lim_{n \to \infty} 0 = 0.
+\end{align*}
+Therefore, \(f \in \cF\).
+This shows that \(\overline{\cA} \subseteq \cF\).
+
+Now pick any \(f \in \cF\).
+
+First note that \(\cA + \R\) is an algebra of continuous real-valued functions that both separate points and vanishes at no points.
+To see \(\cA + \R\) separate points, note that \(\cA\) separate points and \(\cA = \cA + 0 \subseteq \cA + \R\). 
+To see \(\cA + \R\) vanishes at no points, pick any \(x \in K\). Then either \(\cA\) vanishes at \(x\) or not.
+If \(\cA\) doesn't not, then \(\cA + \R\) being a superset of clearly also doesn't not vanish at \(x\); if it does, then there exists \(\alpha \in \cA\) s.t. \(\alpha(x) = 0\), so \(\alpha(x) + 1 \neq 0\) where \(\alpha(x) + 1 \in \cA + \R\), which means that \(\cA + \R\) doesn't not vanish at \(x\), and hence it vanishes at no points in \(K\) at \(x\) is an arbitrary point in \(K\).
+
+Lastly, to see \(\cA\) is an algebra, pick any \(\varphi + a, \psi + b \in \cA + \R\) where \(a,b \in \R\) and \(c \in \R\).
+Note that
+\begin{align*}
+    \varphi + a + \psi + b = (\varphi + \psi) + (a + b) \in \cA + \R,
+\end{align*}
+as \(\varphi + \psi \in \cA\), \(a+b \in \R\), since both \(\cA\) and \(\R\) are closed under addition.
+Also,
+\begin{align*}
+    (\varphi + a)(\psi + b) = (\varphi \psi + a \psi + b \varphi) + ab \in \cA + \R,
+\end{align*}
+as \(\varphi \psi + a \psi + b \varphi \in \cA\) and \(ab \in \R\). It's clear that \(ab \in \R\) as \(\R\) is closed under multiplication. To see \(\varphi \psi + a \psi + b \varphi \in \cA\), note that \(\varphi \psi \in \cA\) since \(\cA\) is closed under multiplication, \(a \psi, b \varphi \in \cA\) since \(\cA\) is also closed under scalar multiplication, so the sum of the three is in \(\cA\) since \(\cA\) is closed under addition.
+Also, it clearly that
+\begin{align*}
+    c(\varphi + a) = c \varphi + ca \in \cA + \R,
+\end{align*}
+as both \(\cA\) and \(\R\) are closed under scalar multiplication.
+
+Therefore, by Stone-Weistrass Theorem, \(\overline{\cA + \R} = \cC(K)\). This means that there exists a sequence of functions \((f_n + c_n) \subseteq \cA + \R\), where \((f_n) \subseteq \cA\) and \((c_n) \subseteq \R\), that approaches uniformly to the function \(f\) in \(\cF\) we have picked before.
+
+It remains to show that \(f_n \to f\) uniformly on \(K\), which gives \(\cF \subseteq \overline{\cA}\).
+Given any \(\varepsilon > 0\).
+Since \(f_n + c_n \to f\) uniformly on \(K\), there exists a natural \(N\) such that for \(n > N\),
+\begin{align*}
+    \abs{(f_n(x) + c_n) - f(x)} < \frac{\varepsilon}{2},
+\end{align*}
+for any \(x \in K\).
+In particular,
+\begin{align*}
+    \abs{(f_n(p) + c_n) - f(p)} < \frac{\varepsilon}{2}, \text{ or simply } \abs{c_n} < \frac{\varepsilon}{2},
+\end{align*}
+since \(f\) and all \(f_n\) vanish at the point \(p\).
+Now note that for any \(n > N\),
+\begin{align*}
+    \abs{f_n(x) - f(x)} = \abs{(f_n(x) + c_n - f(x)) - c_n} \leq \abs{f_n(x) + c_n - f(x)} + \abs{c_n} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon,
+\end{align*}
+for any \(x \in K\).
+This concludes the step that \(f_n \to f\) uniformly on \(K\), which concludes the entire proof.
 \end{fproof}
 \newpage
 
