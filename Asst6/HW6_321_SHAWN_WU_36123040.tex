@@ -372,10 +372,10 @@ Therefore, for any \(\varphi \in \cA\).
     &= \int_{0}^{2 \pi} \pare{\sum_{n=0}^{N} c_ne^{in \theta}}e^{i \theta} \dth\\
     &= \int_{0}^{2 \pi} \sum_{n=0}^{N} c_n e^{i (n+1) \theta} \dth\\
     &= \sum_{n=0}^{N} c_n \int_{0}^{2 \pi} e^{i (n+1) \theta} \dth\\
-    &= \sum_{n=0}^{N} c_n \cdot 0 \tag{since \(n+1 > 0\)}\\
+    &= \sum_{n=0}^{N} c_n \cdot 0 \tag{since \(n+1 \in \N_{\geq 1}\)}\\
     &= 0.
 \end{align*}
-Therefore, if \(f \in \overline{\cA}\), there exists a sequence of functions \((\varphi_n) \subseteq \cA\) that converges to \(f\) uniformly on \(K\).
+Now note that if \(f \in \overline{\cA}\), there exists a sequence of functions \((\varphi_n) \subseteq \cA\) that converges to \(f\) uniformly on \(K\).
 This means that \(\varphi_n(z)z\) converges uniformly to \(f(z)z\) as well on \(K\).
 To see this, given any \(\varepsilon > 0\).
 Since \(\varphi_n \to f\) uniformly, there exists a natural \(N\) such that \(n \geq N\) implies
@@ -393,7 +393,7 @@ Therefore, by Rudin Theorem 7.16 (\textit{I am assuming this also works on compl
     \int_{0}^{2 \pi} f(e^{i  \theta})e^{i \theta} \dth
     &= \lim_{n \to \infty} \int_{0}^{2 \pi}  \varphi_n(e^{i  \theta})e^{i  \theta} \dth = \lim_{n \to \infty} 0 = 0. \tag{\(\ast\)}
 \end{align*}
-Therefore, if we can find a continuous \(f\) such that \((\ast)\) is false, then by contraposition, \(f \notin \overline{\cA}\).
+Hence, if we can find a continuous \(f\) such that \((\ast)\) is false, then by contraposition, \(f \notin \overline{\cA}\).
 
 Consider \(f: K \to \C\) where \(f(z) = \overline{z}\).
 First, \(f\) is continuous on \(K\).
