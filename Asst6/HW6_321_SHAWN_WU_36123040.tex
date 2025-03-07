@@ -229,7 +229,68 @@ as desired.
 \end{fproof}
 
 \begin{fproof}[3(b)]
-  
+The claim is true and we give a direct proof.
+First note that \(\alpha(x) = \beta(x)\) when \(x = 0\) since they are both zero when \(x =0\).
+
+Also, since \(e^{-0x} = 1\) for any \(x \in [0,1]\),
+\begin{align*}
+    \int_{0}^{1} e^{-0x} \dalf &= \int_{0}^{1} \dalf = \alpha(1) - \alpha(0) = \alpha(1), \text{ and similarly,}\\
+    \int_{0}^{1} e^{-0x} \dbet & = \beta(1).
+\end{align*}
+Since \(\int_{0}^{1} e^{-0x} \dalf = \int_{0}^{1} e^{-0x} \dbet\), \(\alpha(x) = \beta(x)\) when \(x = 1\).
+
+Now for any \(x \in (0,1)\).
+We first construct a sequence of functions \((f_n(t))\) on \([0,1]\) that approaches point-wise to the heavy-side step function on \([0,1]\), \(H_x(t)\) where,
+\[
+H_x(t) = 
+\begin{cases}
+    1, & t \in [0,x]\\
+    0, & t \in (x,1].
+\end{cases}
+\]
+First let \(\varepsilon_n = x + (1-x)/2^n\).
+It's clear that \(\varepsilon_n \to 0\), each \(\varepsilon_n\) is nonzero,  and \(x + \varepsilon_n \in (x,1)\).
+Now for each \(n\), define 
+\[
+f_n(t) = 
+\begin{cases}
+    1, & t \in [0,x]\\
+    -\frac{1}{\varepsilon_n} t + \frac{x + \varepsilon_n}{\varepsilon_n}, & t \in (x, x + \varepsilon_n),\\
+    0, & t\in [x + \varepsilon_n, 1].
+\end{cases}
+\]
+\begin{center}
+    \includegraphics[scale=0.2]{Asst6.3b.jpeg}
+\end{center}
+Therefore, for each \(n\),
+\begin{align*}
+    \int_{0}^{1}f_n(t) \dalf(t) = \int_{0}^{x} f_n(t) \dalf(t) + \int_{x}^{x+\varepsilon_n} f_n(t) \dalf(t) + \int_{x+\varepsilon_n}^{1} f_n(t) \dalf(t).
+\end{align*}
+Note first that \(\int_{0}^{x} f_n(t) \dalf(t) = \alpha(x)\) and \(\int_{x+\varepsilon_n}^{1} f_n(t) \dalf(t) = 0\).
+Also,
+\begin{align*}
+    \int_{x}^{x+\varepsilon_n} f_n(t) \dalf(t) \leq \int_{x}^{x+\varepsilon_n} 1 \dalf(t) = \alpha(x + \varepsilon_n) - \alpha(x).
+\end{align*}
+Therefore, combining the above equalities/inequalities,
+\begin{align*}
+    \int_{0}^{1} f_n(t) \dalf(t) \leq \alpha(x) + \alpha(x + \varepsilon_n) - \alpha(x) + 0 = \alpha(x+\varepsilon_n).
+\end{align*}
+Also, since \(f_n(t) \geq 0\) on \([x, x+ \varepsilon_n]\), therefore \(\int_{x}^{x+\varepsilon_n} f_n(t) \dalf(t) \geq 0\).
+This gives that
+\begin{align*}
+    \alpha(x) = \int_{0}^{x} f_n(t) \dalf(t) \leq \int_{0}^{1} f_n(t) \dalf(t).
+\end{align*}
+Combining the above results, we have
+\begin{align*}
+    \alpha(x) \leq \int_{0}^{1} f_n(t) \dalf(t) \leq \alpha(x + \varepsilon_n).
+\end{align*}
+Since \(\alpha\) is continuous, as \(\varepsilon_n \to 0\), \(x + \varepsilon_n \to x\), so \(\alpha(x + \varepsilon_n) \to \alpha(x)\).
+Therefore, \(\int_{0}^{1} f_n(t) \dalf(t) \to \alpha(x)\) by Squeeze Theorem.
+And by a similar reasoning, \(\int_{0}^{1} f_n(t) \dbet(t) \to \beta(x)\).
+
+Note that since each \(f_n\) is continuous, by the results of (a), \((\int_{0}^{1} f_n(t) \dalf)\) and \((\int_{0}^{1} f_n(t) \dbet)\) are essentially the same sequence of real numbers.
+Since the limit of a sequence of real numbers is unique, \(\alpha(x) = \beta(x)\).
+This concludes the proof that \(\alpha(x) = \beta(x)\) on the whole \([0,1]\).
 \end{fproof}
 \newpage
 
