@@ -18,7 +18,45 @@
 
 % Problem 1
 \begin{fproof}[1(a)]
+Fix any \(x\) where \(\abs{x} < 1\).
+First if \(x = 0\). Since \(e^{0} = 1\) by Rudin 8.27. And \(e^{\log y} = y\) for all positive \(y\) by Rudin 8.36. Therefore, \(\log(1) = 0\).
+And it's clear that 
+\begin{align*}
+    0 =\sum_{k=1}^{\infty} (-1)^{k-1} \frac{0^k}{k}.
+\end{align*}
+Thus, the equation is true in this case.
 
+Now suppose \(x \in (0,1)\).
+Then for any \(t \in [1, 1+x]\), \(\abs{1-t} = t-1 \leq x < 1\).
+Therefore, by the formula for geometric series,
+\begin{align*}
+    \frac{1}{t} = \frac{1}{1-(1-t)} = \sum_{k=0}^{\infty} (1-t)^k.
+\end{align*}
+Therefore,
+\begin{align*}
+    \int_{1}^{1+x} \frac{1}{t} \dt = \int_{1}^{1+x} \sum_{k=0}^{\infty} (1-t)^k \dt.
+\end{align*}
+Furthermore, note that the above infinite series has radius of convergence \((0,2)\) as \(\abs{1-t} < 1 \implies 0<t<2\).
+Thus that by Rudin Theorem 8.1, \(\sum_{k=0}^{\infty} (1-t)^k\) converges uniformly on \([1, 1 + x]\), as \([1, 1 + x] \subsetneq (0,2)\).
+Hence, by Rudin Theorem 7.16,
+\begin{align*}
+    \int_{1}^{1+x} \sum_{k=0}^{\infty} (1-t)^k \dt = \sum_{k=0}^{\infty} \int_{1}^{1+x} (1-t)^k \dt. 
+\end{align*}
+Combining the above results, and evaluating each integrals, we have
+\begin{align*}
+    \int_{1}^{1+x} \frac{1}{t} \dt &= \sum_{k=0}^{\infty} \int_{1}^{1+x} (1-t)^k \dt \\
+    &= \sum_{k=0}^{\infty} \brac{\frac{-(1-t)^{k+1}}{k+1}}_{1}^{1+x} \\
+    &= \sum_{k=0}^{\infty} \frac{-(-x)^{k+1}}{k+1}\\
+    &=\sum_{k=1}^{\infty} \frac{-(-x)^{k}}{k}\\
+    &= \sum_{k=1}^{\infty} (-1)^{k-1}\frac{x^k}{k}.
+\end{align*}
+And since Rudin 8.39, \(\log(1+x) = \int_{1}^{1+x} \frac{1}{t} \dt\), the equation is thus true in this case.
+
+Now suppose \(x \in (-1,0)\).
+Then again for any \(t \in [1+x, 1]\), \(\abs{1-t} = 1-t \leq -x < 1\).
+And the series \(\sum_{k=0}^{\infty} (1-t)^k\) converges uniformly on \([1+x,1]\), as \([1, 1+x] \subsetneq (0,2)\).
+Therefore, the above decomposition applies still.
+This completes the proof.
 \end{fproof}
 
 \begin{fproof}[1(b)]
