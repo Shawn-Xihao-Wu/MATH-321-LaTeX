@@ -187,6 +187,28 @@
 \end{fproof}
 
 \begin{fproof}[3(c)]
+ First note that each \(a_{ij}^+, a_{ij}^- \geq 0\).
+ Therefore, by using the simple comparison test against \(\sum_{i=1}^{\infty} \sum_{j=1}^{\infty} |a_{ij}|\), we see that both \(\sum_{i=1}^{\infty}\sum_{j=1}^{\infty} a_{ij}^+ \) and \(\sum_{i=1}^{\infty}\sum_{j=1}^{\infty} a_{ij}^-\) must converge.
+ And therefore with the results in \(3(b)\),
+ \begin{align*}
+    \sum_{i=1}^{\infty}\sum_{j=1}^{\infty} a_{ij}^+ = \sum_{j=1}^{\infty}\sum_{i=1}^{\infty} a_{ij}^+  
+    \text{ and } 
+    \sum_{i=1}^{\infty}\sum_{j=1}^{\infty} a_{ij}^- = \sum_{j=1}^{\infty}\sum_{i=1}^{\infty} a_{ij}^-.
+ \end{align*}
+ This also means that for every fixed \(i\), \(\sum_{j=1}^{\infty} a_{ij}^+\) converges; for each fixed \(j\), \(\sum_{i=1}^{\infty} a_{ij}^+\) converges, and similarly for \(a_{ij}^-\)'s.
+ 
+ Therefore, we have
+ \begin{align*}
+    \sum_{i=1}^{\infty} \sum_{j=1}^{\infty} a_{ij}
+    &= \sum_{i=1}^{\infty} \sum_{j=1}^{\infty} (a_{ij}^+ - a_{ij}^-)\\
+    & = \sum_{i=1}^{\infty} \pare{\sum_{j=1}^{\infty} a_{ij}^+ - \sum_{j=1}^{\infty}a_{ij}^-} \tag{as each \(\sum_{j=1}^{\infty} a_{ij}^+, \sum_{j=1}^{\infty}a_{ij}^-\) converges}\\
+    & = \sum_{i=1}^{\infty}\sum_{j=1}^{\infty}a_{ij}^+ -  \sum_{i=1}^{\infty}\sum_{j=1}^{\infty}a_{ij}^- \tag{as each double sum converges}\\
+    & = \sum_{j=1}^{\infty}\sum_{i=1}^{\infty}a_{ij}^+ - \sum_{j=1}^{\infty}\sum_{i=1}^{\infty}a_{ij}^- \tag{by results above}\\
+    &= \sum_{j=1}^{\infty} \pare{\sum_{i=1}^{\infty}a_{ij}^+ - \sum_{i=1}^{\infty}a_{ij}^-} \tag{as each \(\sum_{i=1}^{\infty} a_{ij}^+, \sum_{i=1}^{\infty}a_{ij}
+    ^-\) converges}\\
+    &= \sum_{j=1}^{\infty}\sum_{i=1}^{\infty} (a_{ij}^+ -a_{ij}^- )\\
+    &=\sum_{j=1}^{\infty}\sum_{i=1}^{\infty} a_{ij}.
+ \end{align*}
  
 \end{fproof}
 \newpage
@@ -312,7 +334,7 @@
  \end{align*}
  which we know already has the radius of convergence \(1\).
 
- Also note that on \((-1,1)\), \(f(x) = \frac{1}{1-x}\), which an unbounded function (diverges to \(+\infty\)).
+ Also note that on \((-1,1)\), \(f(x) = \frac{1}{1-x}\), which is an unbounded function (diverges to \(+\infty\)).
  However, for each partial sum of \(f(x)\), \(S_m(x) = \sum_{n=1}^{m} x^n\) is a bounded function on \((-1,1)\).
  Therefore, for any \(m \in \N\), there will be an \(x \in (-1,1)\) s.t. the difference between \(f(x)\) and \(S_m\) would be at least 1.
  This means that the power series doesn't converge uniformly to \(f(x)\) on \((-1,1)\).
@@ -326,6 +348,5 @@
 %  However, note that
 %  \begin{align*}
 %     \sum_{n=p}^{q} x^n = \sum_{n=1}^{q} x^n - \sum_{n=1}^{p-1}x^n =  \frac{x^{p} - x^{q+1}}{1-x} = \frac{x^p(1 - x^{q+1-p})}{1-x}
- \end{align*}
 \end{fproof}
 \end{document}
