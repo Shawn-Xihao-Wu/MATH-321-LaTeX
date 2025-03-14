@@ -1,6 +1,5 @@
 \documentclass[12pt]{article}
 \usepackage{parskip} % no auto indent
-\usepackage{graphicx} % graphics
 
 % My marco file
 \usepackage{mymarco}
@@ -79,6 +78,37 @@ This gives that
 
 % Problem 2
 \begin{fproof}[2]
+First note that since \(\sum_{n=0}^{\infty}a_n = \infty\), then given any \(c > 0\), we also have
+\begin{align*}
+    c \cdot \sum_{n=0}^{\infty}a_n = \sum_{n=0}^{\infty}c \cdot a_n = \infty.
+\end{align*}
+Let \(M > 0\) be arbitrary.
+Choose \(c = 1/2\). 
+This means that there exists a natural \(K\) s.t. for \(N > K\),
+\begin{align*}
+    \sum_{n=0}^{N} c \cdot a_n > M.
+\end{align*}
+Note that there exists  \(0 < \delta < 1\) such that \((1-\delta)^N = c\), since \(1 - \delta = c^{1/N}\) where \(0 < c^{1/N} < 1\).
+We thus pick this \(\delta\).
+Then note that for any \(1-\delta<x < 1\), and any \(n \leq N\)
+\begin{align*}
+    x^n > (1 - \delta)^n = c^{n/N} \geq c,
+\end{align*}
+which, with the fact that each \(a_n \geq 0\), gives that,
+\begin{align*}
+    \sum_{n=0}^{N} a_n x^n \geq \sum_{n=0}^{N} c \cdot a_n.
+\end{align*}
+Note also that the partial sums of the series \(\sum_{n=0}^{\infty} a_n\) are monotone increasing on \((0,1)\), since \(a_n \geq 0\) for all \(n\).
+Therefore, for \(0 < x < 1\),
+\begin{align*}
+    \sum_{n=0}^{\infty} a_n x^n \geq \sum_{n=0}^{N} a_n x^n.
+\end{align*}
+Therefore, combining the above results, we get that for any \(x \in (1-\delta, 1)\),
+\begin{align*}
+    \sum_{n=0}^{\infty} a_n x^n \geq \sum_{n=0}^{N} a_n x^n \geq \sum_{n=0}^{N} c \cdot a_n > M.
+\end{align*}
+This completes the proof that \(\sum_{n=0}^{\infty} a_n x^n \to \infty\) as \(x \to 1^-\).
+
 
 \end{fproof}
 \newpage
