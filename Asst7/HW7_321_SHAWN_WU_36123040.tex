@@ -17,155 +17,169 @@
 
 % Problem 1
 \begin{fproof}[1(a)]
-Fix any \(x\) where \(\abs{x} < 1\).
-First if \(x = 0\). Since \(e^{0} = 1\) by Rudin 8.27. And \(e^{\log y} = y\) for all positive \(y\) by Rudin 8.36. Therefore, \(\log(1) = 0\).
-And it's clear that 
-\begin{align*}
-    0 =\sum_{k=1}^{\infty} (-1)^{k-1} \frac{0^k}{k}.
-\end{align*}
-Thus, the equation is true in this case.
+ Fix any \(x\) where \(\abs{x} < 1\).
+ First if \(x = 0\). Since \(e^{0} = 1\) by Rudin 8.27. And \(e^{\log y} = y\) for all positive \(y\) by Rudin 8.36. Therefore, \(\log(1) = 0\).
+ And it's clear that 
+ \begin{align*}
+     0 =\sum_{k=1}^{\infty} (-1)^{k-1} \frac{0^k}{k}.
+ \end{align*}
+ Thus, the equation is true in this case.
 
-Now suppose \(x \in (0,1)\).
-Then for any \(t \in [1, 1+x]\), \(\abs{1-t} = t-1 \leq x < 1\).
-Therefore, by the formula for geometric series,
-\begin{align*}
-    \frac{1}{t} = \frac{1}{1-(1-t)} = \sum_{k=0}^{\infty} (1-t)^k.
-\end{align*}
-Therefore,
-\begin{align*}
-    \int_{1}^{1+x} \frac{1}{t} \dt = \int_{1}^{1+x} \sum_{k=0}^{\infty} (1-t)^k \dt.
-\end{align*}
-Furthermore, note that the above infinite series has radius of convergence \((0,2)\) as \(\abs{1-t} < 1 \implies 0<t<2\).
-Thus that by Rudin Theorem 8.1, \(\sum_{k=0}^{\infty} (1-t)^k\) converges uniformly on \([1, 1 + x]\), as \([1, 1 + x] \subsetneq (0,2)\).
-Hence, by Rudin Theorem 7.16,
-\begin{align*}
-    \int_{1}^{1+x} \sum_{k=0}^{\infty} (1-t)^k \dt = \sum_{k=0}^{\infty} \int_{1}^{1+x} (1-t)^k \dt. 
-\end{align*}
-Combining the above results, and evaluating each integrals, we have
-\begin{align*}
-    \int_{1}^{1+x} \frac{1}{t} \dt &= \sum_{k=0}^{\infty} \int_{1}^{1+x} (1-t)^k \dt \\
-    &= \sum_{k=0}^{\infty} \brac{\frac{-(1-t)^{k+1}}{k+1}}_{1}^{1+x} \\
-    &= \sum_{k=0}^{\infty} \frac{-(-x)^{k+1}}{k+1}\\
-    &=\sum_{k=1}^{\infty} \frac{-(-x)^{k}}{k}\\
-    &= \sum_{k=1}^{\infty} (-1)^{k-1}\frac{x^k}{k}.
-\end{align*}
-And since Rudin 8.39, \(\log(1+x) = \int_{1}^{1+x} \frac{1}{t} \dt\), the equation is thus true in this case.
+ Now suppose \(x \in (0,1)\).
+ Then for any \(t \in [1, 1+x]\), \(\abs{1-t} = t-1 \leq x < 1\).
+ Therefore, by the formula for geometric series,
+ \begin{align*}
+     \frac{1}{t} = \frac{1}{1-(1-t)} = \sum_{k=0}^{\infty} (1-t)^k.
+ \end{align*}
+ Therefore,
+ \begin{align*}
+     \int_{1}^{1+x} \frac{1}{t} \dt = \int_{1}^{1+x} \sum_{k=0}^{\infty} (1-t)^k \dt.
+ \end{align*}
+ Furthermore, note that the above infinite series has radius of convergence \((0,2)\)  as \(\abs{1-t} < 1 \implies 0<t<2\).
+ Thus that by Rudin Theorem 8.1, \(\sum_{k=0}^{\infty} (1-t)^k\) converges uniformly  on \([1, 1 + x]\), as \([1, 1 + x] \subsetneq (0,2)\).
+ Hence, by Rudin Theorem 7.16,
+ \begin{align*}
+     \int_{1}^{1+x} \sum_{k=0}^{\infty} (1-t)^k \dt = \sum_{k=0}^{\infty} \int_{1}^{1+x} (1-t)^k \dt. 
+ \end{align*}
+ Combining the above results, and evaluating each integrals, we have
+ \begin{align*}
+     \int_{1}^{1+x} \frac{1}{t} \dt &= \sum_{k=0}^{\infty} \int_{1}^{1+x} (1-t)^k \dt \\
+     &= \sum_{k=0}^{\infty} \brac{\frac{-(1-t)^{k+1}}{k+1}}_{1}^{1+x} \\
+     &= \sum_{k=0}^{\infty} \frac{-(-x)^{k+1}}{k+1}\\
+     &=\sum_{ k=1}^{\infty} \frac{-(-x)^{k}}{k}\\
+     &= \sum_{k=1}^{\infty} (-1)^{k-1}\frac{x^k}{k}.
+ \end{align*}
+ And since Rudin 8.39, \(\log(1+x) = \int_{1}^{1+x} \frac{1}{t} \dt\), the equation is  thus true in this case.
 
-Now suppose \(x \in (-1,0)\).
-Then again for any \(t \in [1+x, 1]\), \(\abs{1-t} = 1-t \leq -x < 1\).
-And the series \(\sum_{k=0}^{\infty} (1-t)^k\) converges uniformly on \([1+x,1]\), as \([1, 1+x] \subsetneq (0,2)\).
-Therefore, the above decomposition applies still.
-This completes the proof.
+ Now suppose \(x \in (-1,0)\).
+ Then again for any \(t \in [1+x, 1]\), \(\abs{1-t} = 1-t \leq -x < 1\).
+ And the series \(\sum_{k=0}^{\infty} (1-t)^k\) converges uniformly on \([1+x,1]\), as  \([1, 1+x] \subsetneq (0,2)\).
+ Therefore, the above decomposition applies still.
+ This completes the proof.
 \end{fproof}
 
 \begin{fproof}[1(b)]
-We apply Rudin 8.2 (Abel's Theorem) here.
-First note that \(\sum_{n=1}^{\infty} (-1)^{n-1}1/n\) converges by the alternating series test.
-Therefore, by Rudin 8.2 and by results from (a),
-\begin{align*}
+ We apply Rudin 8.2 (Abel's Theorem) here.
+ First note that \(\sum_{n=1}^{\infty} (-1)^{n-1}1/n\) converges by the alternating series test.
+ Therefore, by Rudin 8.2 and by results from (a),
+ \begin{align*}
     \lim_{x \to 1^-} \log(1+x) = \lim_{x \to 1^-} \sum_{n=1}^{\infty} (-1)^{n-1} \frac{x^n}{n}=  \sum_{n=1}^{\infty} (-1)^{n-1} \frac{1}{n}.
-\end{align*}
-And since \(e^x\) is and strictly increasing and continuous, then \(\log(y)\), being the inverse of \(e^x\), is also strictly increasing continuous. Therefore,
-\begin{align*}
+ \end{align*}
+ And since \(e^x\) is and strictly increasing and continuous, then \(\log(y)\), being the inverse of \(e^x\), is also strictly increasing continuous. Therefore,
+ \begin{align*}
     \lim_{x \to 1^-} \log(1+x) = \log(2).
-\end{align*}
-This gives that
-\begin{align*}
+ \end{align*}
+ This gives that
+ \begin{align*}
     \log(2) = \sum_{n=1}^{\infty} (-1)^{n-1} \frac{1}{n}. 
-\end{align*}
+ \end{align*}
 \end{fproof}
 \newpage
 
 % Problem 2
 \begin{fproof}[2]
-First note that since \(\sum_{n=0}^{\infty}a_n = \infty\), then given any \(c > 0\), we also have
-\begin{align*}
+ First note that since \(\sum_{n=0}^{\infty}a_n = \infty\), then given any \(c > 0\), we also have
+ \begin{align*}
     c \cdot \sum_{n=0}^{\infty}a_n = \sum_{n=0}^{\infty}c \cdot a_n = \infty.
-\end{align*}
-Let \(M > 0\) be arbitrary.
-Choose \(c = 1/2\). 
-This means that there exists a natural \(K\) s.t. for \(N > K\),
-\begin{align*}
+ \end{align*}
+ Let \(M > 0\) be arbitrary.
+ Choose \(c = 1/2\). 
+ This means that there exists a natural \(K\) s.t. for \(N > K\),
+ \begin{align*}
     \sum_{n=0}^{N} c \cdot a_n > M.
-\end{align*}
-Note that there exists  \(0 < \delta < 1\) such that \((1-\delta)^N = c\), since \(1 - \delta = c^{1/N}\) where \(0 < c^{1/N} < 1\).
-We thus pick this \(\delta\).
-Then note that for any \(1-\delta<x < 1\), and any \(n \leq N\)
-\begin{align*}
+ \end{align*}
+ Note that there exists  \(0 < \delta < 1\) such that \((1-\delta)^N = c\), since \(1 - \delta = c^{1/N}\) where \(0 < c^{1/N} < 1\).
+ We thus pick this \(\delta\).
+ Then note that for any \(1-\delta<x < 1\), and any \(n \leq N\)
+ \begin{align*}
     x^n > (1 - \delta)^n = c^{n/N} \geq c,
-\end{align*}
-which, with the fact that each \(a_n \geq 0\), gives that,
-\begin{align*}
+ \end{align*}
+ which, with the fact that each \(a_n \geq 0\), gives that,
+ \begin{align*}
     \sum_{n=0}^{N} a_n x^n \geq \sum_{n=0}^{N} c \cdot a_n.
-\end{align*}
-Note also that the partial sums of the series \(\sum_{n=0}^{\infty} a_n\) are monotone increasing on \((0,1)\), since \(a_n \geq 0\) for all \(n\).
-Therefore, for \(0 < x < 1\),
-\begin{align*}
+ \end{align*}
+ Note also that the partial sums of the series \(\sum_{n=0}^{\infty} a_n\) are monotone increasing on \((0,1)\), since \(a_n \geq 0\) for all \(n\).
+ Therefore, for \(0 < x < 1\),
+ \begin{align*}
     \sum_{n=0}^{\infty} a_n x^n \geq \sum_{n=0}^{N} a_n x^n.
-\end{align*}
-Therefore, combining the above results, we get that for any \(x \in (1-\delta, 1)\),
-\begin{align*}
+ \end{align*}
+ Therefore, combining the above results, we get that for any \(x \in (1-\delta, 1)\),
+ \begin{align*}
     \sum_{n=0}^{\infty} a_n x^n \geq \sum_{n=0}^{N} a_n x^n \geq \sum_{n=0}^{N} c \cdot a_n > M.
-\end{align*}
-This completes the proof that \(\sum_{n=0}^{\infty} a_n x^n \to \infty\) as \(x \to 1^-\).
-
+ \end{align*}
+ This completes the proof that \(\sum_{n=0}^{\infty} a_n x^n \to \infty\) as \(x \to 1^-\).
 
 \end{fproof}
 \newpage
 
 % Problem 3
 \begin{fproof}[3(a)]
-  
+ Note that for any fixed \(i\), the sequence of numbers \((a_{i,1}, a_{i,2}, \cdots)\) contains both \(a_{i,i}\) and \(a_{i,i+1}\), i.e, it contains both 1 and \(-1\) with the rest of entries zero.
+ This means that for fixed \(i\), \(\sum_{j=1}^{\infty} = a_{i,j} = 0\).
+ Therefore,
+ \begin{align*}
+    \sum_{i=1}^{\infty} \sum_{j=1}^{\infty} a_{i,j} = 0 + 0 + \cdots = 0.
+ \end{align*}
+ However, for fixed \(j\), the sequence \((a_{1,j}, a_{2,j}, \cdots)\) contains both non-zero terms \(a_{j,j}\) and \(a_{j-1,j}\) (i.e., 1 and \(-1\)) only if \(j \geq 2\); for \(j =1\), the sequence only contains \(a_{j,j}\) (i.e., 1) as its only non-zero term.
+ This means that \(\sum_{i=1}^{\infty}a_{i,1} = 1\), whereas \(\sum_{i=1}^{\infty} a_{i,j} = 0\) for \(j \geq 2\).
+ Therefore,
+ \begin{align*}
+    \sum_{j=1}^{\infty} \sum_{i=1}^{\infty} a_{i,j} 
+    &= \sum_{j=1}^{1} \sum_{i=1}^{\infty} a_{i,j} + \sum_{j=2}^{\infty} \sum_{i=1}^{\infty} a_{i,j}\\
+    &=\sum_{i=1}^{\infty} a_{i,1} + \sum_{j=2}^{\infty} 0\\
+    &= 1 + 0\\
+    & = 1.
+ \end{align*}
 \end{fproof}
 
 \begin{fproof}[3(b)]
-  
+ 
 \end{fproof}
 
 \begin{fproof}[3(c)]
-  
+
 \end{fproof}
 \newpage
 
 % Problem 4
 \begin{fproof}[4]
-We first show that \(f \in \cR[0,R]\).
-By Rudin Theorem 8.1, we know that \(f\) is continuous on \([0,R)\) since \(f\) is a power series with radius of convergence \(R\).
-Also note that \(f\) is bounded on the whole \([0,R]\) since \(f\) is bounded on \([0,R)\) and \(f(R) \in \R\). 
-This means that \(f(x)\) on \([0,R]\) is a bounded function with possibly \(x = R\) being its only discontinuity. 
-Therefore, by Rudin Theorem 6.10, \(f \in \cR[0,R]\), i.e., the expression \(\int_{0}^{R}f(x) \dx\) is well-defined.
+ We first show that \(f \in \cR[0,R]\).
+ By Rudin Theorem 8.1, we know that \(f\) is continuous on \([0,R)\) since \(f\) is a power series with radius of convergence \(R\).
+ Also note that \(f\) is bounded on the whole \([0,R]\) since \(f\) is bounded on \([0,R)\) and \(f(R) \in \R\). 
+ This means that \(f(x)\) on \([0,R]\) is a bounded function with possibly \(x = R\) being its only discontinuity. 
+ Therefore, by Rudin Theorem 6.10, \(f \in \cR[0,R]\), i.e., the expression \(\int_{0}^{R}f(x) \dx\) is well-defined.
 
-We next show that the series \(\sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1}\) actually converges.
-First note that for each \(n\),
-\begin{align*}
+ We next show that the series \(\sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1}\) actually converges.
+ First note that for each \(n\),
+ \begin{align*}
     a_n \frac{R^{n+1}}{n+1} = a_n R^n \cdot \frac{R }{n+1}.
-\end{align*}
-Let \(\alpha_n = a_n R^n\) and \(\beta_n = R/(n+1)\).
-Since \(\sum_{n=0}^{\infty} \alpha_n\) converges, the partial sums \(A_n \) of \(\sum_{n=0 }^{\infty} \alpha_n \) form a bounded sequence.
-Also \(\beta_0 \geq \beta_1 \geq \beta_n \geq \cdots \), with \(\lim_{n \to \infty } \beta_n = 0.\)
-Therefore, by Rudin Theorem 3.42, \(\sum_{n=0 }^{\infty } \alpha_n \beta_n \) converges, i.e., \(\sum_{n=0}^{\infty }a_n R^{n+1}/(n+1)\) converges.
+ \end{align*}
+ Let \(\alpha_n = a_n R^n\) and \(\beta_n = R/(n+1)\).
+ Since \(\sum_{n=0}^{\infty} \alpha_n\) converges, the partial sums \(A_n \) of \(\sum_{n=0 }^{\infty} \alpha_n \) form a bounded sequence.
+ Also \(\beta_0 \geq \beta_1 \geq \beta_n \geq \cdots \), with \(\lim_{n \to \infty } \beta_n = 0.\)
+ Therefore, by Rudin Theorem 3.42, \(\sum_{n=0 }^{\infty } \alpha_n \beta_n \) converges, i.e., \(\sum_{n=0}^{\infty }a_n R^{n+1}/(n+1)\) converges.
 
-Now note that by Rudin Theorem 8.1, \(f(x) = \sum_{n=0 }^{\infty } a_n x^n \) converges uniformly on \([0, R - \xi ]\) given any \(R > \xi > 0\).
-Thus, by Rudin Theorem 7.16,
-\begin{align*}
+ Now note that by Rudin Theorem 8.1, \(f(x) = \sum_{n=0 }^{\infty } a_n x^n \) converges uniformly on \([0, R - \xi ]\) given any \(R > \xi > 0\).
+ Thus, by Rudin Theorem 7.16,
+ \begin{align*}
     \int_{0}^{R - \xi} f(x) \dx = \sum_{n=0}^{\infty} \int_{0}^{R - \xi} a_n x^n \dx.
-\end{align*}
-And by integrating each term,
-\begin{align*}
+ \end{align*}
+ And by integrating each term,
+ \begin{align*}
     \int_{0}^{R - \xi}f(x) \dx = \sum_{n=0}^{\infty}a_n \frac{(R-\xi)^{n+1}}{n+1}.
-\end{align*}
-For the rest of this proof, we show that as \(\xi \to 0^+\),
-\begin{align*}
+ \end{align*}
+ For the rest of this proof, we show that as \(\xi \to 0^+\),
+ \begin{align*}
     \int_{0}^{R - \xi}f(x) \dx \to \int_{0}^{R}f(x) \dx, \text{  and  } 
     \sum_{n=0}^{\infty}a_n \frac{(R-\xi)^{n+1}}{n+1} \to \sum_{n=0}^{\infty}a_n \frac{R^{n+1}}{n+1}.
-\end{align*}
-And since the functional limit is unique, this would complete the proof that \(\int_{0}^{R}f(x) \dx = \sum_{n=0}^{\infty}a_n \frac{R^{n+1}}{n+1}.\)
+ \end{align*}
+ And since the functional limit is unique, this would complete the proof that \(\int_{0}^{R}f(x) \dx = \sum_{n=0}^{\infty}a_n \frac{R^{n+1}}{n+1}.\)
 
-Let's show the former first.
-Let \(\varepsilon > 0\) be given. Note first that since \(f(x)\) is bounded on \([0,R]\), then there exists \(M \in \R\) such that \(\abs{f(x)} \leq M\) for all \(x \in [0, R]\).
-Let \(\delta = \varepsilon/M\).
-Then for any \(0 < \xi < \delta\),
-\begin{align*}
+ Let's show the former first.
+ Let \(\varepsilon > 0\) be given. Note first that since \(f(x)\) is bounded on \([0,R]\), then there exists \(M \in \R\) such that \(\abs{f(x)} \leq M\) for all \(x \in [0, R]\).
+ Let \(\delta = \varepsilon/M\).
+ Then for any \(0 < \xi < \delta\),
+ \begin{align*}
     \abs{\int_{0}^{R - \xi} f(x) \dx - \int_{0}^{R} f(x) \dx} 
     &= \abs{\int_{R-\xi}^{R}f(x) \dx} \\
     &\leq \int_{R - \xi}^{R} \abs{f(x)} \dx \tag{Rudin 6.13(b)}\\
@@ -173,28 +187,28 @@ Then for any \(0 < \xi < \delta\),
     & = M \xi \\
     & < M \cdot \frac{\varepsilon}{M}\\
     & < \varepsilon.
-\end{align*}
-This completes the proof of the former functional limit. 
+ \end{align*}
+ This completes the proof of the former functional limit. 
 
-Let's move on to the later.
-Notice that if we do a change of variable with \(t = (R - \xi)/\xi\),
-\begin{align*}
+ Let's move on to the later.
+ Notice that if we do a change of variable with \(t = (R - \xi)/\xi\),
+ \begin{align*}
     \sum_{n=0}^{\infty} a_n \frac{(R - \xi)^{n+1}}{n+1} = \sum_{n=0}^{\infty}a_n \frac{R^{n+1}}{n+1} \pare{\frac{R - \xi}{R}}^{n+1} = \sum_{n=0}^{\infty}a_n \frac{R^{n+1}}{n+1} t^{n+1},
-\end{align*}
-where \(0 < t < 1\).
-Note that as \(\sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1}\) converges by above, by Rudin Theorem 8.2,
-\begin{align*}
+ \end{align*}
+ where \(0 < t < 1\).
+ Note that as \(\sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1}\) converges by above, by Rudin Theorem 8.2,
+ \begin{align*}
     \lim_{t \to 1^-} \sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1} t^{n+1} = \sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1}.
-\end{align*}
-Also note that by the change of variable,
-\begin{align*}
+ \end{align*}
+ Also note that by the change of variable,
+ \begin{align*}
     \lim_{t \to 1^-} \sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1} t^{n+1} = \lim_{\xi \to 0^+} \sum_{n=0}^{\infty}a_n \frac{R^{n+1}}{n+1} \pare{\frac{R - \xi}{R}}^{n+1}.
-\end{align*}
-Therefore, by combining the above results,
-\begin{align*}
+ \end{align*}
+ Therefore, by combining the above results,
+ \begin{align*}
     \lim_{\xi \to 0^+} \sum_{n=0}^{\infty} a_n \frac{(R - \xi)^{n+1}}{n+1} = \sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1}.
-\end{align*}
-This completes the latter functional limit, which completes the whole proof.
+ \end{align*}
+ This completes the latter functional limit, which completes the whole proof.
 \end{fproof}
 \newpage
 
