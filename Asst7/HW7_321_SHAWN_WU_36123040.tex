@@ -133,11 +133,61 @@
 \end{fproof}
 
 \begin{fproof}[3(b)]
- 
+ Let \(A = \set{\sum_{i,j \in I} a_{ij} : \text{ finite } I \subseteq \N \times \N}\).
+ \textit{Note that in the following we restrict our discussion to the case that \(\sup A < +\infty\); otherwise it's clear that both double sums are infinite as the prompt suggested.}
+ We show both that \(\sum_{i=1}^{\infty} \sum_{j=1}^{\infty} a_{ij} = \sup A\) and \(\sum_{j=1}^{\infty} \sum_{i=1}^{\infty} a_{ij} = \sup A\). It's suffice to show the former as the argument for the later is symmetrical.
+
+ Let \(T = \sum_{i=1}^{\infty} \sum_{j=1}^{\infty} a_{ij}\).
+ We first claim that if \(T = +\infty\), then \(\sup A = +\infty\) (the proof of the claim right below). The point is that since we've established that \(\sup A < +\infty\), thus \(T < +\infty\).
+ Let's prove that claim. 
+ Suppose, for the sake of contradiction, \(\sup A = M \in \R\).
+ Since \(T = \sum_{i=1}^{\infty} \sum_{j=1}^{\infty} a_{ij} = \infty\), there must exist a natural \(N\) s.t. \(\sum_{i=1}^{N} \sum_{j=1}^{\infty} a_{ij} > 2M\).
+ Note that since each \(a_{ij} \geq 0\), then for any fixed \(i\), either \(\sum_{j=1}^{\infty} a_{ij}\) converges or diverges to \(+\infty\) by monotone convergence theorem.
+
+ Now, if there exists \(\sum_{j=1}^{\infty} a_{ij} = \infty\) for some \(i = 1, 2, \cdots, N\), then it's clear that \(\sup A = +\infty\), which is a contradiction.
+ If, however, \(\sum_{j=1}^{\infty} a_{ij} < +\infty\) for each \(i = 1, 2, \cdots, N\), then as the tail of convergent series goes to zero, for each \(i\), there exists \(N_i\) s.t. \(\sum_{j=N_i + 1}^{\infty} < M/N\) or \(-\sum_{j=N_i + 1}^{\infty} > -M/N\).
+ This means that
+ \begin{align*}
+    \sum_{i=1}^{N} \sum_{j=1}^{N_i} a_{ij}
+    &= \sum_{i=1}^{N} \pare{\sum_{j=1}^{\infty} a_{ij} - \sum_{j=N_i+1}^{\infty} a_{ij}} \\
+    &= \sum_{i=1}^{N}\sum_{j=1}^{\infty} a_{ij}- \sum_{i=1}^{N}\sum_{j=N_i+1}^{\infty} a_{ij} \tag{can split cuz all series converges} \\
+    &>  2M - N \cdot M/N \\
+    &= M,
+ \end{align*}
+ which contradicts the fact that \(M\) is an upper bound for \(A\).
+
+ Now that \(T \in \R\), we show that
+ \begin{enumerate}
+    \item \(T\) is an upper bound for the set A,
+    \item \(T - \varepsilon\) is not an upper bound for \(A\), for any \(\varepsilon > 0\).
+ \end{enumerate}
+ The first point is rather clear. 
+ If we pick any \(a = \sum_{i,j \in I} a_{ij} \in A\).
+ Note that \(a\) only sums over finitely many \(a_{ij}\)'s. 
+ And since each \(a_{ij} \geq 0\), \(T\), being the sum of all \(a_{ij}\)'s, is necessarily no smaller than \(a\).
+ This gives that \(T \geq a\).
+ So \(T\) is indeed an upper bound for \(A\) as \(a\) is arbitrary.
+
+ To show the second point, let \(\varepsilon > 0\) be given.
+ Then there must exists a natural \(N\) s.t.
+ \begin{align*}
+    \sum_{i=1}^{N} \sum_{j=1}^{\infty} a_{ij} > T - \varepsilon/2.
+ \end{align*}
+ Similarly, for each \(i\), there exists a natural \(N_i\) s.t. 
+ \begin{align*}
+    \sum_{j=N_i+1}^{\infty} a_{ij} < \varepsilon/(2N) \text{ or } -\sum_{j=N_i+1}^{\infty} a_{ij} > -\varepsilon/(2N).
+ \end{align*}
+ This means that
+ \begin{align*}
+    \sum_{i=1}^{N} \sum_{j=1}^{N_i} a_{ij} 
+    = \sum_{i=1}^{N} \pare{\sum_{j=1}^{\infty} a_{ij} - \sum_{j=N_i+1}^{N_i} a_{ij}} = \sum_{i=1}^{N}\sum_{j=1}^{\infty} a_{ij} - \sum_{i=1}^{N}\sum_{j=N_i+1}^{N_i} a_{ij} > T - \frac{\varepsilon}{2} -\frac{N \varepsilon}{2N} = T - \varepsilon,
+ \end{align*}
+ which means that \(T -\varepsilon\) is not an upper bound.
+ This completes the proof.
 \end{fproof}
 
 \begin{fproof}[3(c)]
-
+ 
 \end{fproof}
 \newpage
 
@@ -214,14 +264,14 @@
 
 % Problem 5
 \begin{fproof}[5(a)]
-
+ 
 \end{fproof}
 
 \begin{fproof}[5(b)]
-
+ 
 \end{fproof}
 
 \begin{fproof}[5(c)]
-
+ 
 \end{fproof}
 \end{document}
