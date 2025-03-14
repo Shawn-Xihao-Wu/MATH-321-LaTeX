@@ -264,14 +264,68 @@
 
 % Problem 5
 \begin{fproof}[5(a)]
+ Consider 
+ \begin{align*}
+    f(x) = \sum_{n=1}^{\infty} a_n x^n = \sum_{n=1}^{\infty} (-1)^{n-1}\frac{1}{n} x^n.
+ \end{align*}
+ Using ratio test, we get,
+ \begin{align*}
+    \lim_{n \to \infty} \abs{\frac{a_{n+1}}{a_n}} = \lim_{n \to \infty} \frac{n}{n+1} = 1,
+ \end{align*}
+ which gives that the radius of convergence is \(1\).
  
+ At \(x = 1\), \(f(1) = \sum_{n=1}^{\infty} (-1)^{n-1} \frac{1}{n} = \log(2)\) as proven in 1(b).
+ So the power series \(f(x)\) converges at \(x = 1\).
+ However, 
+ \begin{align*}
+    \sum_{n=1}^{\infty} n a_n =\sum_{n=1}^{\infty} (-1)^{n-1} \frac{n}{n} = \sum_{n=1}^{\infty} (-1)^{n-1},
+ \end{align*}
+ which diverges.
+
 \end{fproof}
 
 \begin{fproof}[5(b)]
- 
+ Consider
+ \begin{align*}
+    f(x) = \sum_{n=1}^{\infty} a_n x^n = \sum_{n=1}^{\infty} \frac{1}{n^2} x^n.
+ \end{align*}
+ Using ratio test, we get,
+ \begin{align*}
+    \lim_{n \to \infty} \abs{\frac{a_{n+1}}{a_n}} = \lim_{n \to \infty} \pare{\frac{n}{n+1}}^2 = 1^2 = 1,
+ \end{align*}
+ which gives that the radius of convergence is \(1\).
+
+ Now let \(f_n(x) = x^n/n^2\) defined on \([-1,1]\).
+ Let \(M_n = 1/n^2\).
+ Then it's clear that for each \(n\), and each \(x\) on \([-1,1]\)
+ \begin{align*}
+    \abs{f_n(x)} = \frac{\abs{x}^n}{n^2} \leq \frac{1}{n^2} = M_n.
+ \end{align*}
+ And \(\sum_{n=0}^{\infty} M_n\) converges by the \(p\)-test.
+ Therefore, by Rudin Theorem 7.10 (\(M\)-test), \(f(x) = \sum_{n=0}^{\infty}f_n\) converges uniformly on \([-1,1]\).
 \end{fproof}
 
 \begin{fproof}[5(c)]
- 
+ Consider the geometric series
+ \begin{align*}
+    f(x) = \sum_{n=0}^{\infty} a_n x^n = \sum_{n=0}^{\infty} x^n,
+ \end{align*}
+ which we know already has the radius of convergence \(1\).
+
+ Also note that on \((-1,1)\), \(f(x) = \frac{1}{1-x}\), which an unbounded function (diverges to \(+\infty\)).
+ However, for each partial sum of \(f(x)\), \(S_m(x) = \sum_{n=1}^{m} x^n\) is a bounded function on \((-1,1)\).
+ Therefore, for any \(m \in \N\), there will be an \(x \in (-1,1)\) s.t. the difference between \(f(x)\) and \(S_m\) would be at least 1.
+ This means that the power series doesn't converge uniformly to \(f(x)\) on \((-1,1)\).
+
+%  This means that \(f\) satisfy the Cauchy Criteria, i.e., 
+%  for any \(\varepsilon > 0\), there exists a natural \(N\) s.t. \(p,q \geq N\) (assuming \(q > p\)) implies that
+%  \begin{align*}
+%     \sum_{n=p}^{q} x^n < \varepsilon,
+%  \end{align*}
+%  for all \(x \in (-1,1)\).
+%  However, note that
+%  \begin{align*}
+%     \sum_{n=p}^{q} x^n = \sum_{n=1}^{q} x^n - \sum_{n=1}^{p-1}x^n =  \frac{x^{p} - x^{q+1}}{1-x} = \frac{x^p(1 - x^{q+1-p})}{1-x}
+ \end{align*}
 \end{fproof}
 \end{document}
