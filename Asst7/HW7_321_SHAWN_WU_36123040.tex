@@ -99,7 +99,72 @@ This gives that
 
 % Problem 4
 \begin{fproof}[4]
+We first show that \(f \in \cR[0,R]\).
+By Rudin Theorem 8.1, we know that \(f\) is continuous on \([0,R)\) since \(f\) is a power series with radius of convergence \(R\).
+Also note that \(f\) is bounded on the whole \([0,R]\) since \(f\) is bounded on \([0,R)\) and \(f(R) \in \R\). 
+This means that \(f(x)\) on \([0,R]\) is a bounded function with possibly \(x = R\) being its only discontinuity. 
+Therefore, by Rudin Theorem 6.10, \(f \in \cR[0,R]\), i.e., the expression \(\int_{0}^{R}f(x) \dx\) is well-defined.
 
+We next show that the series \(\sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1}\) actually converges.
+First note that for each \(n\),
+\begin{align*}
+    a_n \frac{R^{n+1}}{n+1} = a_n R^n \cdot \frac{R }{n+1}.
+\end{align*}
+Let \(\alpha_n = a_n R^n\) and \(\beta_n = R/(n+1)\).
+Since \(\sum_{n=0}^{\infty} \alpha_n\) converges, the partial sums \(A_n \) of \(\sum_{n=0 }^{\infty} \alpha_n \) form a bounded sequence.
+Also \(\beta_0 \geq \beta_1 \geq \beta_n \geq \cdots \), with \(\lim_{n \to \infty } \beta_n = 0.\)
+Therefore, by Rudin Theorem 3.42, \(\sum_{n=0 }^{\infty } \alpha_n \beta_n \) converges, i.e., \(\sum_{n=0}^{\infty }a_n R^{n+1}/(n+1)\) converges.
+
+Now note that by Rudin Theorem 8.1, \(f(x) = \sum_{n=0 }^{\infty } a_n x^n \) converges uniformly on \([0, R - \xi ]\) given any \(R > \xi > 0\).
+Thus, by Rudin Theorem 7.16,
+\begin{align*}
+    \int_{0}^{R - \xi} f(x) \dx = \sum_{n=0}^{\infty} \int_{0}^{R - \xi} a_n x^n \dx.
+\end{align*}
+And by integrating each term,
+\begin{align*}
+    \int_{0}^{R - \xi}f(x) \dx = \sum_{n=0}^{\infty}a_n \frac{(R-\xi)^{n+1}}{n+1}.
+\end{align*}
+For the rest of this proof, we show that as \(\xi \to 0^+\),
+\begin{align*}
+    \int_{0}^{R - \xi}f(x) \dx \to \int_{0}^{R}f(x) \dx, \text{  and  } 
+    \sum_{n=0}^{\infty}a_n \frac{(R-\xi)^{n+1}}{n+1} \to \sum_{n=0}^{\infty}a_n \frac{R^{n+1}}{n+1}.
+\end{align*}
+And since the functional limit is unique, this would complete the proof that \(\int_{0}^{R}f(x) \dx = \sum_{n=0}^{\infty}a_n \frac{R^{n+1}}{n+1}.\)
+
+Let's show the former first.
+Let \(\varepsilon > 0\) be given. Note first that since \(f(x)\) is bounded on \([0,R]\), then there exists \(M \in \R\) such that \(\abs{f(x)} \leq M\) for all \(x \in [0, R]\).
+Let \(\delta = \varepsilon/M\).
+Then for any \(0 < \xi < \delta\),
+\begin{align*}
+    \abs{\int_{0}^{R - \xi} f(x) \dx - \int_{0}^{R} f(x) \dx} 
+    &= \abs{\int_{R-\xi}^{R}f(x) \dx} \\
+    &\leq \int_{R - \xi}^{R} \abs{f(x)} \dx \tag{Rudin 6.13(b)}\\
+    &\leq \int_{R - \xi}^{R }M \dx\\
+    & = M \xi \\
+    & < M \cdot \frac{\varepsilon}{M}\\
+    & < \varepsilon.
+\end{align*}
+This completes the proof of the former functional limit. 
+
+Let's move on to the later.
+Notice that if we do a change of variable with \(t = (R - \xi)/\xi\),
+\begin{align*}
+    \sum_{n=0}^{\infty} a_n \frac{(R - \xi)^{n+1}}{n+1} = \sum_{n=0}^{\infty}a_n \frac{R^{n+1}}{n+1} \pare{\frac{R - \xi}{R}}^{n+1} = \sum_{n=0}^{\infty}a_n \frac{R^{n+1}}{n+1} t^{n+1},
+\end{align*}
+where \(0 < t < 1\).
+Note that as \(\sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1}\) converges by above, by Rudin Theorem 8.2,
+\begin{align*}
+    \lim_{t \to 1^-} \sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1} t^{n+1} = \sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1}.
+\end{align*}
+Also note that by the change of variable,
+\begin{align*}
+    \lim_{t \to 1^-} \sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1} t^{n+1} = \lim_{\xi \to 0^+} \sum_{n=0}^{\infty}a_n \frac{R^{n+1}}{n+1} \pare{\frac{R - \xi}{R}}^{n+1}.
+\end{align*}
+Therefore, by combining the above results,
+\begin{align*}
+    \lim_{\xi \to 0^+} \sum_{n=0}^{\infty} a_n \frac{(R - \xi)^{n+1}}{n+1} = \sum_{n=0}^{\infty} a_n \frac{R^{n+1}}{n+1}.
+\end{align*}
+This completes the latter functional limit, which completes the whole proof.
 \end{fproof}
 \newpage
 
