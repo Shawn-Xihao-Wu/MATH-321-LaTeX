@@ -60,7 +60,20 @@ This completes the proof.
 \end{fproof}
 
 \begin{fproof}[1(b)]
-
+We apply Rudin 8.2 (Abel's Theorem) here.
+First note that \(\sum_{n=1}^{\infty} (-1)^{n-1}1/n\) converges by the alternating series test.
+Therefore, by Rudin 8.2 and by results from (a),
+\begin{align*}
+    \lim_{x \to 1^-} \log(1+x) = \lim_{x \to 1^-} \sum_{n=1}^{\infty} (-1)^{n-1} \frac{x^n}{n}=  \sum_{n=1}^{\infty} (-1)^{n-1} \frac{1}{n}.
+\end{align*}
+And since \(e^x\) is and strictly increasing and continuous, then \(\log(y)\), being the inverse of \(e^x\), is also strictly increasing continuous. Therefore,
+\begin{align*}
+    \lim_{x \to 1^-} \log(1+x) = \log(2).
+\end{align*}
+This gives that
+\begin{align*}
+    \log(2) = \sum_{n=1}^{\infty} (-1)^{n-1} \frac{1}{n}. 
+\end{align*}
 \end{fproof}
 \newpage
 
