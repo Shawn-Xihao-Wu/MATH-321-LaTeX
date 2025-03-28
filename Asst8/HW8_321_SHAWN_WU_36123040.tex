@@ -97,11 +97,11 @@ Combining with the previous results, we can thus conclude that,
 
 % Problem 2
 \begin{fproof}[2(a)]
- 
+ \textit{Sorry I don't know this one...}
 \end{fproof}
 
 \begin{fproof}[2(b)]
- 
+ \textit{I hate series...}
 \end{fproof}
 \newpage
 
@@ -244,7 +244,7 @@ Combining with the previous results, we can thus conclude that,
  \begin{align*}
    \lim_{N\to \infty} \int_{\pi-x}^{\pi} \sin(Ns) \cot(s/2) \ds = 0.
  \end{align*}
- And with a reasoning along with the peridocity of \(\sin\) and \(\cot\), we also get that
+ And with a similar reasoning along with the peridocity of \(\sin\) and \(\cot\), we also get that
  \begin{align*}
    \lim_{N\to \infty} \int_{\pi}^{\pi+x} \sin(Ns) \cot(s/2) \ds = 0.
  \end{align*}
@@ -256,7 +256,7 @@ Combining with the previous results, we can thus conclude that,
    =& 0 +0\\
    =& 0.
  \end{align*}
- With a similar reasoning, we can get that
+ And with a similar reasoning as above, we can get that
  \begin{align*}
    \lim_{N \to \infty}\int_{\pi - x}^{\pi+x} \cos(Ns) \ds = 0.
  \end{align*}
@@ -281,11 +281,11 @@ Combining with the previous results, we can thus conclude that,
    \int_{0}^{x_N} \frac{\sin(N+1/2)t}{2 \sin(t/2)} \dt = \frac{1}{2N + 1} \int_{0}^{\pi} \frac{\sin u}{\sin \pare{\frac{u}{2N+1}}} \du.
  \end{align*}
  Note that as \(N \to \infty\), \(\sin \pare{\frac{u}{2N+1}} \to \frac{u}{2N+1}\).
- Therefore, above RHS approaches \(\int_{0}^{\pi} \frac{\sin t}{t} \dt\).
+ Therefore, above RHS approaches \(\int_{0}^{\pi} \frac{\sin t}{t} \dt\) as \(N \to \infty\).
 
  It remains to show that
  \(r_N(x_N) \to 0\) as \(N \to \infty\).
- First note that there exists \(\delta > 0\) such that \(\sin(s/2) > 1/2\) for all \(s/2 \in (\pi/2 - \delta/2, \pi/2 + \delta/2)\) or for all \(s \in (\pi - \delta, \pi + \delta)\).
+ First note that there exists \(\delta > 0\) such that \(\sin(s/2) > 1/2\), for all \(s/2 \in (\pi/2 - \delta/2, \pi/2 + \delta/2)\), or for all \(s \in (\pi - \delta, \pi + \delta)\).
  This means that \(1/|\sin(s/2)| < 2\) for all \(s \in (\pi - \delta, \pi + \delta)\).
  And note that on \((\pi - \delta, \pi + \delta)\), for all \(N\),
  \begin{align*}
@@ -296,7 +296,11 @@ Combining with the previous results, we can thus conclude that,
  such that for all \(N > M\), \(|x_N| < \varepsilon\). This also means that there exists \(L\) such that  for all \(N > L\), \((\pi-x_N, \pi + x_N) \subseteq (\pi - \delta, \pi + \delta)\).
  Therefore, for all \(N > \max\{M,L\}\),
  \begin{align*}
-   \abs{r_N(x_N)} \leq \frac{1}{2\pi}\int_{\pi-\varepsilon}^{\pi + \varepsilon}\abs{D_N(s)} \ds \leq \frac{1}{2\pi} \int_{\pi - \varepsilon}^{\pi + \varepsilon} 2 \ds = \frac{2 \varepsilon}{\pi}.
+   \abs{r_N(x_N)} 
+   \leq \frac{1}{2\pi}\int_{\pi-x_N}^{\pi + x_N}\abs{D_N(s)} \ds 
+   \leq \frac{1}{2\pi}\int_{\pi-x_N}^{\pi + x_N} 2 \ds 
+   \leq \frac{1}{2\pi} \int_{\pi - \varepsilon}^{\pi + \varepsilon} 2 \ds 
+   = \frac{2 \varepsilon}{\pi}.
  \end{align*}
  This concludes the proof that \(r_N(x_N) \to 0\).
 \end{fproof}
