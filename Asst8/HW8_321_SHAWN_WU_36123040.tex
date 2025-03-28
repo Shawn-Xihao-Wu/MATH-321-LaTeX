@@ -178,7 +178,59 @@ Combining with the previous results, we can thus conclude that,
 
 % Problem 4
 \begin{fproof}[4(a)]
- 
+ First notice that for any \(x \in (0, \pi/2)\),\((\pi - x, \pi + x) \subseteq (\pi/2, 3\pi/2)\).
+ This means that \(\pi/2 < s < 3\pi/2 \), so \(\pi/4 < s/2 < 3\pi/4\).
+ Therefore, \(\sin(s/2) \neq 0\) on any \((\pi - x, \pi + x)\).
+ This means that the integral of \(D_N(s)\) over \((\pi - x, \pi + x)\) is well-defined.
+
+ Now we fix \(x \in (0, \pi/2)\).
+ Note that
+ \begin{align*}
+   \int_{\pi - x}^{\pi+x} D_N(s) 
+   &= \int_{\pi - x}^{\pi+x} \frac{\sin(Ns + s/2)}{s/2} \ds\\
+   &=\int_{\pi - x}^{\pi+x}\frac{\sin(Ns)\cos(s/2)+\cos(Ns)\sin(s/2)}{\sin(s/2)} \ds\\
+   &=\int_{\pi - x}^{\pi+x} \sin(Ns) \cot(s/2) \ds + \int_{\pi - x}^{\pi+x} \cos(Ns) \ds.
+ \end{align*}
+ Now, define \(g: [-\pi, \pi] \to \R\) as
+ \[
+ g(s) = \begin{cases}
+   \cot(s/2) & \text{if } s \in (\pi-x, \pi+x),\\
+   0 & \text{otherwise}.
+ \end{cases}
+ \]
+ Note that \(g(s)\in \cR[-\pi, \pi]\), since \(\cot(s/2)\) is continous on \(\pi-x, \pi+x\), which means that \(g(s)\) has finitely many discontinuities on \([-\pi, \pi]\).
+ Therefore, what we've learned in class,
+ \begin{align*}
+   \lim_{N\to \infty} \int_{-\pi}^{\pi} \sin(Ns) g(s) \ds = 0.
+ \end{align*}
+ Noice also that for each \(N\),
+ \begin{align*}
+   \int_{-\pi}^{\pi} \sin(Ns) g(s) \ds = \int_{\pi-x}^{\pi} \sin(Ns) \cot(s/2) \ds.
+ \end{align*}
+ Thus, 
+ \begin{align*}
+   \lim_{N\to \infty} \int_{\pi-x}^{\pi} \sin(Ns) \cot(s/2) \ds = 0.
+ \end{align*}
+ And with a reasoning along with the peridocity of \(\sin\) and \(\cot\), we also get that
+ \begin{align*}
+   \lim_{N\to \infty} \int_{\pi}^{\pi+x} \sin(Ns) \cot(s/2) \ds = 0.
+ \end{align*}
+ Therefore, 
+ \begin{align*}
+   &\lim_{N \to \infty} \int_{\pi-x}^{\pi+x} \sin(Ns) \cot(s/2) \ds \\
+   =& \lim_{N \to \infty} \pare{\int_{\pi-x}^{\pi} \sin(Ns) \cot(s/2) \ds + \int_{\pi}^{\pi+x} \sin(Ns) \cot(s/2) \ds}\\
+   =&\lim_{N\to \infty} \int_{\pi-x}^{\pi} \sin(Ns) \cot(s/2) \ds + \lim_{n\to \infty} \int_{\pi}^{\pi+x} \sin(Ns) \cot(s/2) \\
+   =& 0 +0\\
+   =& 0.
+ \end{align*}
+ With a similar reasoning, we can get that
+ \begin{align*}
+   \lim_{N \to \infty}\int_{\pi - x}^{\pi+x} \cos(Ns) \ds = 0.
+ \end{align*}
+ Therefore,
+ \begin{align*}
+   \lim_{N\to\infty} \int_{\pi - x}^{\pi+x} D_n(s) \ds, \text{ which gives that } \lim_{N \to \infty} r_N(x) = 0.
+ \end{align*}
 \end{fproof}
 
 \begin{fproof}[4(b)]
