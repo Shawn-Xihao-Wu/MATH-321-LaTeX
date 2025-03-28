@@ -13,7 +13,40 @@
 
 % Problem 1
 \begin{fproof}[1(a)]
- 
+ First note that for any fixed \(a > 0\) and \(x \neq 0\).
+ \begin{align*}
+    \frac{a^x - 1}{x} = \frac{e^{x \log a} - e^{x \log 1}}{x} = \brac{\frac{e^{xt}}{x}}_{t= \log 1}^{t= \log a} = \int_{\log 1}^{\log a} e^{x t} \dt.
+ \end{align*}
+ Now consider any real sequence \((x_n) \subseteq \R \setminus \{0\}\) s.t. \(x_n \to 0\).
+ Define \(f : I \to \R\), where \(I\) is the closed interval between \(\log a\) and \(\log 1(=0)\), as
+ \begin{align*}
+    f_n(t) = e^{x_n t}.
+ \end{align*}
+ We claim that \(f_n(t)\) converges uniformly to \(f(t) = 1\) on \(I\).
+ To see this, first note that for each \(n\), \(f_n\) is monotone on \(I\).
+ Therefore,
+ \begin{align*}
+    M_n &= \sup_{t \in I} \abs{f_n(t) - f(t)} \tag{by the def. of \(M_n\)}\\
+    &= \sup_{t \in I} \abs{f_n(t) - f_n(0)} \tag{since \(f_n(0) = f(t), \forall n,t\) }\\
+    &= \sup_{t \in I} \abs{f_n(\log a) - f_n(0)} \tag{since \(f_n\) monotone on \(I\)}\\
+    &=\sup_{t \in I} \abs{f_n(\log a) - 1} \tag{since \(f_n(0) = 1\)}.
+ \end{align*}
+ Therefore, \(M_n \to 0\) since \(f_n(\log a) \to 1\) as \(n \to \infty\).
+ This concludes the proof that \(f_n(t)\) converges uniformly to \(1\).
+ Hence by Rudin Theorem 7.16,
+ \begin{align*}
+    \lim_{n\to \infty} \int_{\log 1}^{\log a} f_n(t) \dt = \int_{\log 1}^{\log a} f(t) \dt, \text{ i.e.,}
+    \lim_{n\to \infty} \int_{\log 1}^{\log a} e^{x_n t} \dt = \int_{\log 1}^{\log a} 1 \dt = \log a.
+ \end{align*}
+Since \((x_n)\) is an arbitrary sequence in \(\R \setminus \{0\}\) that converges to \(0\), by Rudin Theorem 4.2,
+\begin{align*}
+    \lim_{x \to 0} \int_{\log 1}^{\log a} e^{xt} 
+    dt = \log a.
+\end{align*}
+Combining with the previous results, we can thus conclude that,
+\begin{align*}
+    \lim_{x \to 0} \frac{a^x - 1}{x} = \log a
+\end{align*}
 \end{fproof}
 
 \begin{fproof}[1(b)]
