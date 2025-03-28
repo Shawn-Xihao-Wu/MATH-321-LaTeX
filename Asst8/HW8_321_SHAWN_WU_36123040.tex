@@ -50,11 +50,48 @@ Combining with the previous results, we can thus conclude that,
 \end{fproof}
 
 \begin{fproof}[1(b)]
- 
+ First note that by HW7(a), if \(x \neq 0\) is small enough, say \(|x| < 1\),
+ \begin{align*}
+    \log(1+x)= x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots
+ \end{align*}
+ This means that for a fixed \(x \neq 0\) small enough,
+ \begin{align*}
+    \frac{1}{x^2}\brac{\log(1+x) - x} 
+    &= \frac{1}{x^2} \brac{-\frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5} - \cdots}\\
+    & = -\frac{1}{2} + \frac{x}{3} - \frac{x^2}{4} + \frac{x^3}{5} - \frac{x^4}{6} + \cdots \tag{since \(\sum_{k=2}^{\infty} (-1)^{k-1} \frac{x^k}{k}\) converges}\\
+    &=-\frac{1}{2} + \sum_{k=1}^{\infty} (-1)^{k-1} \frac{x^{k}}{k+2}.
+ \end{align*}
+ Note that since
+ \begin{align*}
+   \limsup_{k \to \infty} \sqrt[k]{\frac{1}{k+2}} = 1,
+ \end{align*}
+ the series \(\sum_{k=1}^{\infty} (-1)^{k-1} \frac{x^{k}}{k+2}\) has raidus of convergence of \(1\).
+ This means that on \((-1,1)\), the function \(f(x) = \sum_{k=1}^{\infty} (-1)^{k-1} \frac{x^{k}}{k+2}\) is continuous by Rudin Theorem 8.1.
+ Therefore,
+ \begin{align*}
+   \lim_{x \to 0} \frac{\log(1 + x)-x}{x^2} 
+   & = \lim_{x \to 0} -\frac{1}{2} + \sum_{k=1}^{\infty} (-1)^{k-1} \frac{x^{k}}{k+2} \tag{since they agree on \(|x| < 1\)}\\
+   & = -\frac{1}{2} + \lim_{x \to 0} \sum_{k=1}^{\infty} (-1)^{k-1} \frac{x^{k}}{k+2} \tag{since the series converges}\\
+   &= -\frac{1}{2} + f(0) \tag{since \(f\) is continous at \(0\)}\\
+   & = -\frac{1}{2}. \tag{since \(f(0)=0\)}
+ \end{align*}
 \end{fproof}
 
 \begin{fproof}[1(c)]
- 
+ First note that with the results in Rudin Theorem 3.31, it's clear that for any sequence \((a_n) \subseteq \R\) where \(a_n \to \infty\),
+ \begin{align*}
+   \lim_{n \to \infty} \pare{1 + \frac{1}{a_n}}^{a_n} = e.
+ \end{align*}
+ We thus fix \(x \in \R\).
+ If \(x = 0\), then 
+ \begin{align*}
+   \lim_{n \to \infty} \pare{1 + \frac{0}{n}}^n = \lim_{n \to \infty} 1 = 1 = e^0.
+ \end{align*}
+ If \(x \neq 0\), then
+ \begin{align*}
+   \lim_{n \to \infty} \pare{1 + \frac{x}{n}}^n = \brac{\pare{1 + \frac{1}{n/x}}^{n/x}}^x = e^x,
+ \end{align*}
+ since as \(n \to \infty\), \(n/x \to \infty\).
 \end{fproof}
 \newpage
 
