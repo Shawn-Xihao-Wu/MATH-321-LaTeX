@@ -101,7 +101,23 @@ Combining with the previous results, we can thus conclude that,
 \end{fproof}
 
 \begin{fproof}[2(b)]
- \textit{I hate series...}
+ Let \(g(y) = 1/y\).
+ Since \(f(0) \neq 0\), we can thus express \(g(y)\) as a power series around \(f(0)\).
+ Note that
+ \begin{align*}
+   \frac{1}{y} = \frac{1}{f(0) + (y - f(0))} = \frac{1}{f(0)} \cdot \frac{1}{1 + \frac{y-f(0)}{f(0)}}.
+ \end{align*}
+ And note that when \(\abs{\frac{y-f(0)}{f(0)}} < 1\),
+ \begin{align*}
+   \frac{1}{y} = \frac{1}{f(0)} \sum_{n=0}^{\infty} (-1)^n \pare{\frac{y - f(0)}{f(0)}}^n = \sum_{n=0}^{\infty} \frac{(-1)^n}{f(0)^{n+1}} (y - f(0))^n.
+ \end{align*}
+ Therefore,
+ \begin{align*}
+   \frac{1}{f(x)} = \sum_{n=0}^{\infty} \frac{(-1)^n}{f(0)^{n+1}} (f(x) - f(0))^n.
+ \end{align*}
+ And RHS converges when \(\abs{\frac{f(x)-f(0)}{f(0)}} < 1\), or \(\abs{f(x)-f(0)} < \abs{f(0)}\). Since \(f\) is continous at 0, there eixsts \(\rho > 0\), such that the above inequality is true when \(x \in (-\rho, \rho)\).
+ And the RHS is clearly a power series centered as \(0\), by the contintinuity of \(f\) as well.
+
 \end{fproof}
 \newpage
 
