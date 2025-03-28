@@ -234,10 +234,37 @@ Combining with the previous results, we can thus conclude that,
 \end{fproof}
 
 \begin{fproof}[4(b)]
- 
-\end{fproof}
+ It's suffice to show that 
+ \begin{align*}
+   \frac{\pi}{2} s_N(x_N) \to \int_{0}^{x} \frac{\sin(t)}{t} \dt.
+ \end{align*}
+ Note that 
+ \begin{align*}
+   \frac{\pi}{2} s_N(x_N) = \int_{0}^{x_N} \frac{\sin(N+1/2)t}{2 \sin(t/2)} \dt + \frac{\pi}{2} r_N(x_N).
+ \end{align*}
+ Let \(u = (N + 1/2)t\).
+ Therefore,
+ \begin{align*}
+   \int_{0}^{x_N} \frac{\sin(N+1/2)t}{2 \sin(t/2)} \dt = \frac{1}{2N + 1} \int_{0}^{\pi} \frac{\sin u}{\sin \pare{\frac{u}{2N+1}}} \du.
+ \end{align*}
+ Note that as \(N \to \infty\), \(\sin \pare{\frac{u}{2N+1}} \to \frac{u}{2N+1}\).
+ Therefore, above RHS approaches \(\int_{0}^{\pi} \frac{\sin t}{t} \dt\).
 
-\begin{fproof}[4(c)]
- 
+ It remains to show that
+ \(r_N(x_N) \to 0\) as \(N \to \infty\).
+ First note that there exists \(\delta > 0\) such that \(\sin(s/2) > 1/2\) for all \(s/2 \in (\pi/2 - \delta/2, \pi/2 + \delta/2)\) or for all \(s \in (\pi - \delta, \pi + \delta)\).
+ This means that \(1/|\sin(s/2)| < 2\) for all \(s \in (\pi - \delta, \pi + \delta)\).
+ And note that on \((\pi - \delta, \pi + \delta)\), for all \(N\),
+ \begin{align*}
+   \abs{D_N(s)} = \abs{\frac{\sin(N+1/2)s}{\sin(s/2)}} \leq \frac{1}{\abs{\sin(s/2)}} < 2.
+ \end{align*}
+ Given \(\varepsilon > 0\).
+ Since \(x_N \to 0\), then there exists \(M\)
+ such that for all \(N > M\), \(|x_N| < \varepsilon\). This also means that there exists \(L\) such that  for all \(N > L\), \((\pi-x_N, \pi + x_N) \subseteq (\pi - \delta, \pi + \delta)\).
+ Therefore, for all \(N > \max\{M,L\}\),
+ \begin{align*}
+   \abs{r_N(x_N)} \leq \frac{1}{2\pi}\int_{\pi-\varepsilon}^{\pi + \varepsilon}\abs{D_N(s)} \ds \leq \frac{1}{2\pi} \int_{\pi - \varepsilon}^{\pi + \varepsilon} 2 \ds = \frac{2 \varepsilon}{\pi}.
+ \end{align*}
+ This concludes the proof that \(r_N(x_N) \to 0\).
 \end{fproof}
 \end{document}
