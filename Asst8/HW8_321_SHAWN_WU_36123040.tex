@@ -168,7 +168,20 @@ Combining with the previous results, we can thus conclude that,
 \end{fproof}
 
 \begin{fproof}[3(b)]
- 
+ We plug in \(x = \pi/2\) into above equation as \(\pi/2\) is within in the said intervals.
+ Notice that on one side that
+ \begin{align*}
+   f\pare{\frac{\pi}{2}} = \frac{\pi - \pi/2}{2} = \frac{\pi}{4}.
+ \end{align*}
+ On another 
+ \begin{align*}
+   f \pare{\frac{\pi}{2}} = \sum_{n=0}^{\infty} \frac{1}{n} \sin \pare{\frac{n \pi}{2}}.
+ \end{align*}
+ And when \(n\) is even, \(\sin(n\pi/2) = 0\), when \(n \equiv 1 \pmod 4\), \(\sin(n\pi/2) = 1\), and when \(n \equiv 3 \pmod 4\), \(\sin(n\pi/2) = -1\).
+ This concludes the proof that
+ \begin{align*}
+   \frac{\pi}{4} = \sum_{n=0}^{\infty} \frac{(-1)^n}{2n+1}
+ \end{align*}
 \end{fproof}
 
 \begin{fproof}[3(c)]
