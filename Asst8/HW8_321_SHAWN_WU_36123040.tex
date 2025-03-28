@@ -107,7 +107,64 @@ Combining with the previous results, we can thus conclude that,
 
 % Problem 3
 \begin{fproof}[3(a)]
- 
+ Let's first compute each \(c_m\).
+ By Rudin (62),
+ \begin{align*}
+   c_m 
+   = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x) e^{-imx} \dx.
+ \end{align*}
+ If \(m = 0\), then with the periodicity of the \(f\),
+ \begin{align*}
+   c_m = \frac{1}{2 \pi} \int_{-\pi}^{\pi} f(x) \dx = 0.
+ \end{align*}
+ If \(m \neq 0\), then with integration by parts,
+ \begin{align*}
+   c_m 
+   &= \frac{1}{2\pi} \int_{-\pi}^{0} \frac{-\pi-x}{2} e^{-imx} \dx + \frac{1}{2\pi} \int_{-\pi}^{0} \frac{\pi-x}{2} e^{-imx} \dx\\
+   & = \frac{-i\pi m +e^{i\pi m} - 1}{4 \pi m^2} + \frac{-i\pi m - e^{-i\pi m} + 1}{4 \pi m^2}.
+ \end{align*}
+ Therefore, when \(m\) is even,
+ \begin{align*}
+   c_m = \frac{-i \pi m + 1 - 1}{4 \pi m^2} + \frac{-i \pi m - 1 + 1}{4 \pi m^2} = \frac{-i}{2m},
+ \end{align*}
+ and similarly, when \(m\) is odd,
+ \begin{align*}
+   c_m = \frac{-i \pi m + (-1) - 1}{4 \pi m^2} + \frac{-i \pi m - (-1) + 1}{4 \pi m^2} = \frac{-i}{2m}.
+ \end{align*}
+ \begin{center}
+   \(\ast~\ast~\ast\)
+ \end{center}
+ Now note that for \(m \neq 0\),
+ \begin{align*}
+   c_m e^{imx}
+   &= -\frac{1}{2m}e^{i(mx + \pi/2)}\\
+   &= -\frac{1}{2m} \pare{\cos(mx + \pi/2) + i \sin(mx + \pi/2)}\\
+   &= \frac{1}{2m} \pare{\sin(mx) - i \sin(mx + \pi/2)}\\
+   &= \frac{1}{2m} \pare{\sin(mx) - i\cos(mx)}.
+ \end{align*}
+ And similarly,
+ \begin{align*}
+   c_{-m}e^{-imx}
+   & = \frac{1}{2(-m)}\pare{\sin(-mx) - i\sin(-mx + \pi/2)}\\
+   &=\frac{1}{2m} \pare{\sin(mx) + i\sin(-mx + \pi/2)}\\
+   &= \frac{1}{2m} \pare{\sin(mx) + i\sin(-(mx - \pi/2))}\\
+   &=\frac{1}{2m} \pare{\sin(mx) - i\sin(mx - \pi/2)}\\
+   &=\frac{1}{2m} \pare{\sin(mx) + i\cos(mx)}.
+ \end{align*}
+ This means that,
+ \begin{align*}
+   c_m e^{imx} + c_{-m}e^{-imx} = \frac{1}{m} \sin(mx).
+ \end{align*}
+ Therefore,
+ \begin{align*}
+   \sum_{m = -\infty}^{\infty} c_m e^{imx} = \sum_{n=0}^{\infty} \frac{1}{n} \sin(nx).
+ \end{align*}
+ Also since \(f(x)\) is differentiable on \([-\pi, 0)\) and \((0, \pi]\), \(f(x)\) is thus Lipschitz continuous on there as well.
+ Therefore, by Rudin Theorem 8.14, on those intervals, \(f(x)\)'s Fourier series converge to \(f(x)\), which means that on those intervals,
+ \begin{align*}
+   f(x) = \sum_{n=0}^{\infty} \frac{1}{n} \sin(nx).
+ \end{align*}
+
 \end{fproof}
 
 \begin{fproof}[3(b)]
